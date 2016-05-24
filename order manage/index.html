@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="image/icon/favicon.png">
+		<title>訂單管理頁面</title>
+		<meta name="author" content="2016 NTUIM SA GROUP7">
+		<meta name="description" content="">
+		<!-- bootstrap css -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- custim css -->
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body id="page-top">
+		<nav class="navbar navbar-fixed-top nav-custom">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target=".navbar-main-collapse" class="navbar-toggle">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#page-top" class="navbar-brand"><img src="http://placehold.it/125x30" alt="" class="logo"></a>
+				</div>
+				<div class="collapse navbar-collapse navbar-main-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">
+								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								登入<i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<section>
+			<div class="container">
+				<h2>訂單管理</h2>
+				<div class="manage">
+					<div class="row">
+						<div class="visible-xs col-xs-2 col-xs-offset-1" id="pills-xs">
+							<a class="btn dropdown-toggle" id="pills-xs-dropdown" data-toggle="dropdown" href="#">
+								全部<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu"></ul>
+						</div>
+						<div class="hidden-xs col-sm-8 col-md-6" id="pills">
+							<ul class="nav nav-pills">
+								<li class="active"><a data-toggle="pill" href="#all_orders">全部</a></li>
+								<li><a data-toggle="pill" href="#pending">未執行</a></li>
+								<li><a data-toggle="pill" href="#processing">處理中</a></li>
+								<li><a data-toggle="pill" href="#paid">已付款</a></li>
+								<li><a data-toggle="pill" href="#overdue">已逾期</a></li>
+								<li><a data-toggle="pill" href="#shipped">已取貨</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-7 col-sm-4 col-xs-offset-2 col-sm-offset-0">
+							<form action="#" method="get">
+								<input type="text" id="search" name="search_criteria" placeholder="新增搜尋條件">
+								<!-- SVG 放大鏡 -->
+								<!-- By: Timothy Miller
+								License: Creative Commons (Attribution-Share Alike 3.0 Unported) -->
+								<?xml version="1.0" ?>
+								<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+								<svg height="16px" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="12%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<path d="M15.7,14.3l-3.105-3.105C13.473,10.024,14,8.576,14,7c0-3.866-3.134-7-7-7S0,3.134,0,7s3.134,7,7,7  c1.576,0,3.024-0.527,4.194-1.405L14.3,15.7c0.184,0.184,0.38,0.3,0.7,0.3c0.553,0,1-0.447,1-1C16,14.781,15.946,14.546,15.7,14.3z   M2,7c0-2.762,2.238-5,5-5s5,2.238,5,5s-2.238,5-5,5S2,9.762,2,7z"/>
+								</svg>
+							</form>
+						</div>
+					</div>
+					<div class="row table-responsive">
+						<div class="tab-content">
+							<div id="all_orders" class="tab-pane fade in active">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<td>訂單編號</td>
+											<td>訂單時間</td>
+											<td>訂單狀態</td>
+											<td>付款狀態</td>
+											<td>配送狀態</td>
+											<td>顧客名稱</td>
+											<td>顧客地址</td>
+											<td>總計金額</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><a href="#">b02705039</a></td>
+											<td>2016-05-15 11:37AM</td>
+											<td>處理中</td>
+											<td>未付款</td>
+											<td>未出貨</td>
+											<td>indian123</td>
+											<td>12 Paschimi Marg, Vasant Vihar New Delhi- 110057, India</td>
+											<td>&#36; 220</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div id="pending" class="tab-pane fade">
+								<table class="table table-hover">
+
+								</table>
+							</div>
+							<div id="processing" class="tab-pane fade">
+								<table class="table table-hover">
+
+								</table>
+							</div>
+							<div id="paid" class="tab-pane fade">
+								<table class="table table-hover">
+
+								</table>
+							</div>
+							<div id="overdue" class="tab-pane fade">
+								<table class="table table-hover">
+
+								</table>
+							</div>
+							<div id="shipped" class="tab-pane fade">
+								<table class="table table-hover">
+
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<!-- jquery -->
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<!-- bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- custom js -->
+	<script src="js/trisoap.js"></script>
+</html>
