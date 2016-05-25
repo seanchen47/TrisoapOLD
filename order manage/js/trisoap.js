@@ -1,3 +1,9 @@
+$(function() {
+	$(".various").fancybox({
+		openEffect: "elastic",
+		closeEffect: "elastic"
+	})
+})
 // Set check status according to checking dropdown
 function changeStatus() {
 	var selects = document.getElementById("status");

@@ -50,7 +50,16 @@
 }
 #search {
 	width: 80%;
-	max-width: 152px;
+	float: left;
+}
+#search_label {
+	width: 20%;
+}
+.click_label input {
+	display: none;
+}
+.click_label svg {
+	cursor: pointer;
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,

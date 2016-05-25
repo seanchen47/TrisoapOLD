@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant-TW">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,8 @@
 		<meta name="description" content="">
 		<!-- bootstrap css -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- fancybox css -->
+		<link href="fancyBox/source/jquery.fancybox.css" rel="stylesheet">
 		<!-- custim css -->
 		<link href="css/style.css" rel="stylesheet">
 	</head>
@@ -65,14 +67,17 @@
 						<div class="col-xs-7 col-sm-4 col-xs-offset-2 col-sm-offset-0">
 							<form action="#" method="get">
 								<input type="text" id="search" name="search_criteria" placeholder="新增搜尋條件">
-								<!-- SVG 放大鏡 -->
-								<!-- By: Timothy Miller
-								License: Creative Commons (Attribution-Share Alike 3.0 Unported) -->
-								<?xml version="1.0" ?>
-								<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-								<svg height="16px" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="12%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<path d="M15.7,14.3l-3.105-3.105C13.473,10.024,14,8.576,14,7c0-3.866-3.134-7-7-7S0,3.134,0,7s3.134,7,7,7  c1.576,0,3.024-0.527,4.194-1.405L14.3,15.7c0.184,0.184,0.38,0.3,0.7,0.3c0.553,0,1-0.447,1-1C16,14.781,15.946,14.546,15.7,14.3z   M2,7c0-2.762,2.238-5,5-5s5,2.238,5,5s-2.238,5-5,5S2,9.762,2,7z"/>
-								</svg>
+								<label class="click_label" id="search_label">
+									<input type="submit" name="submit_search" value="">
+									<!-- SVG 放大鏡 -->
+									<!-- By: Timothy Miller
+									License: Creative Commons (Attribution-Share Alike 3.0 Unported) -->
+									<!-- xml version="1.0"
+									<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'> -->
+									<svg height="16px" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<path d="M15.7,14.3l-3.105-3.105C13.473,10.024,14,8.576,14,7c0-3.866-3.134-7-7-7S0,3.134,0,7s3.134,7,7,7  c1.576,0,3.024-0.527,4.194-1.405L14.3,15.7c0.184,0.184,0.38,0.3,0.7,0.3c0.553,0,1-0.447,1-1C16,14.781,15.946,14.546,15.7,14.3z   M2,7c0-2.762,2.238-5,5-5s5,2.238,5,5s-2.238,5-5,5S2,9.762,2,7z"/>
+									</svg>
+								</label>
 							</form>
 						</div>
 					</div>
@@ -94,7 +99,7 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><a href="#">b02705039</a></td>
+											<td><a class="various fancybox.ajax" rel="group" href="#">b02705039</a></td>
 											<td>2016-05-15 11:37AM</td>
 											<td>處理中</td>
 											<td>未付款</td>
@@ -141,6 +146,8 @@
 	<script src="js/jquery-1.12.3.min.js"></script>
 	<!-- bootstrap js -->
 	<script src="js/bootstrap.min.js"></script>
+	<!-- fancybox js -->
+	<script src="fancybox/source/jquery.fancybox.js"></script>
 	<!-- custom js -->
 	<script src="js/trisoap.js"></script>
 </html>
