@@ -16,7 +16,7 @@
 	</head>
 	<body id="page-top">
 		<?php
-			include("mysql_connect.php");
+			include("../php/mysql_connect.php");
 			$EMAIL = $_SESSION['EMAIL'];
 			$CUSIDT = $_SESSION['CUSIDT'];
 			if($EMAIL != null):
@@ -39,7 +39,7 @@
 				<div class="collapse navbar-collapse navbar-main-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="HomePage_Manager.php">
+							<a href="../php/HomePage_Manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
