@@ -15,6 +15,16 @@
 		<link href="css/style.css" rel="stylesheet">
 	</head>
 	<body id="page-top">
+		<?php
+			include("mysql_connect.php");
+			$EMAIL = $_SESSION['EMAIL'];
+			$CUSIDT = $_SESSION['CUSIDT'];
+			if($EMAIL != null):
+				if($CUSIDT == 'A'):
+					$queryCUSNM = "SELECT CUSNM FROM CUSMAS where EMAIL = '$EMAIL'";
+					$result = mysql_query($queryCUSNM);
+					$row = mysql_fetch_row($result);
+		?>
 		<nav class="navbar navbar-fixed-top nav-custom">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -29,7 +39,7 @@
 				<div class="collapse navbar-collapse navbar-main-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#">
+							<a href="HomePage_Manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
@@ -39,8 +49,17 @@
 							</a>
 						</li>
 						<li>
+							<!-- 要改成dropdown -->
+							<!-- 更新使用者資料、密碼 -->
 							<a href="#">
-								登入<i class="fa fa-angle-down" aria-hidden="true"></i>
+								<?php
+									echo $row[0]."，您好<br>";
+								?>
+							</a>
+						</li>
+						<li>
+							<a href="User_logout.php">
+								登出<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
 					</ul>
@@ -60,10 +79,12 @@
 						</div>
 						<div class="hidden-xs col-sm-8 col-md-6" id="pills">
 							<ul class="nav nav-pills">
-								<li class="active"><a data-toggle="pill" href="#all_comments">全部</a></li>
-								<li><a data-toggle="pill" href="#not_certified">未審核</a></li>
-								<li><a data-toggle="pill" href="#pass_comments">審核通過</a></li>
-								<li><a data-toggle="pill" href="#fail_comments">審核未過</a></li>
+								<li class="active"><a data-toggle="pill" href="#all">全部</a></li>
+								<li><a data-toggle="pill" href="#sent">已送出</a></li>
+								<li><a data-toggle="pill" href="#pass">已通過</a></li>
+								<li><a data-toggle="pill" href="#fail">未通過</a></li>
+								<li><a data-toggle="pill" href="#published">公開中</a></li>
+								<li><a data-toggle="pill" href="#epic">典藏</a></li>
 								<li><a data-toggle="pill" href="#letter">編輯信件</a></li>
 							</ul>
 						</div>
@@ -71,33 +92,117 @@
 					</div>
 					<div class="row table-responsive">
 						<div class="tab-content">
-							<div id="all_comments" class="tab-pane fade in active">
+						<!-- use php for loop to generate each pill -->
+						<?php for($i = 0; $i < 6; $i++) { ?>
+						
+						<!-- 全部 -->
+						<?php switch($i):
+						case 0:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE ACTCODE = '1'"; ?>
+							<div id="all" class="tab-pane fade in active">
+						<?php break; ?>
+						
+						<!-- 已送出 -->
+						<?php
+						case 1:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE MSGSTAT = 'A' AND ACTCODE = '1'"; ?>
+							<div id="sent" class="tab-pane fade">
+						<?php break; ?>
+						
+						<!-- 已通過 -->
+						<?php
+						case 2:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE MSGSTAT = 'B' AND ACTCODE = '1'"; ?>
+							<div id="pass" class="tab-pane fade">
+						<?php break; ?>
+						
+						<!-- 未通過 -->
+						<?php
+						case 3:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE MSGSTAT = 'C' AND ACTCODE = '1'"; ?>
+							<div id="fail" class="tab-pane fade">
+						<?php break; ?>
+						
+						<!-- 公開中 -->
+						<?php
+						case 4:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE MSGSTAT = 'D' AND ACTCODE = '1'"; ?>
+							<div id="published" class="tab-pane fade">
+						<?php break; ?>
+						
+						<!-- 典藏 -->
+						<?php
+						case 5:
+							$queryMessage = "SELECT * FROM MSGMAS WHERE MSGSTAT = 'E' AND ACTCODE = '1'"; ?>
+							<div id="epic" class="tab-pane fade">
+						<?php break; ?>
+						
+						<?php endswitch; ?>
+								<!-- pill content -->
 								<table class="table table-hover">
 									<thead>
 										<tr>
 											<td>留言編號</td>
 											<td>留言時間</td>
 											<td>相片/影片</td>
-											<td>留言說明</td>
+											<td>留言內容</td>
 											<td>顧客帳號</td>
-											<td>顧客暱稱</td>
 											<td>審核狀態</td>
 											<td>審核</td>
 										</tr>
 									</thead>
 									<tbody>
+									<?php
+										$result = mysql_query($queryMessage);
+										while($row = mysql_fetch_array($result)){
+									?>
 										<tr>
-											<td id="comment_no"><a href="#">16051901</a></td>
-											<td id="date">2016/05/22 21:38</td>
-											<td id="uploads"><img src="image/upload_example.jpg"></td>
+											<!-- 留言編號 -->
+											<td>
+												<?php
+													echo $row['MSGNO'];
+												?>
+											</td>
+											<!-- 留言時間 -->
+											<td>
+												<?php
+													echo $row['CREATEDATE'];
+												?>
+											</td>
+											<!-- 相片/影片 -->
+											<td>
+												<?php
+													if($row['MSGVIDEO'] == null){
+														$PHOTOTYPE = $row['PHOTOTYPE'];
+														$PHOTO = base64_decode($row['PHOTO']);
+														echo "照片";
+														// echo $PHOTO;
+													}
+													else{
+														echo "影片";
+														// echo $MSGVIDEO;
+													}
+												?>
+											</td>
 											<!-- <video controls>
 													<source src="video/machine_civilization.mp4" type="video/mp4">
 													Your browser does not support the <code>video</code> element.
 												</video> -->
-											<td id="comment">謝謝你們！</td>
-											<td id="user">indian001</td>
-											<td>郝愛玩</td>
-											<td id="current_status">等待</td>
+											<!-- 留言內容 -->
+											<td>
+												<?php
+													echo $row['MSGTXT'];
+												?>
+											</td>
+											<!-- 顧客帳號 -->
+											<td>
+												<?php
+													echo $row['CUSNO'];
+												?>
+											</td>
+											<!-- 審核狀態 default: 等待 -->
+											<td>等待</td>
+											<!-- 審核dropdown -->
 											<td>
 												<select name="check" id="status" onchange="changeStatus()">
 													<option value="" disabled selected>請選擇狀態</option>
@@ -106,78 +211,14 @@
 												</select>
 											</td>
 										</tr>
+									<?php
+										}
+									?>
 									</tbody>
 								</table>
 							</div>
-							<div id="not_certified" class="tab-pane fade">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<td>留言編號</td>
-											<td>留言時間</td>
-											<td>相片/影片</td>
-											<td>留言說明</td>
-											<td>顧客帳號</td>
-											<td>顧客暱稱</td>
-											<td>審核狀態</td>
-											<td>審核</td>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- <tr>
-											<td id="comment_no"></td>
-											<td id="date"></td>
-											<td id="uploads"></td>
-											<td id="comment"></td>
-											<td id="account"></td>
-											<td id="user"></td>
-											<td id="current_status">等待</td>
-											<td>
-												<select name="check" id="status" onchange="change_status()">
-													<option value="" disabled selected>請選擇狀態</option>
-													<option value="pass">通過</option>
-													<option value="fail">拒絕</option>
-												</select>
-											</td>
-										</tr> -->
-									</tbody>
-								</table>
-							</div>
-							<div id="pass_comments" class="tab-pane fade">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<td>留言編號</td>
-											<td>留言時間</td>
-											<td>相片/影片</td>
-											<td>留言說明</td>
-											<td>顧客帳號</td>
-											<td>顧客暱稱</td>
-											<td>審核狀態</td>
-											<td>審核</td>
-										</tr>
-									</thead>
-									<tbody> <!-- SQL generate content --> </tbody>
-								</table>
-							</div>
-							<div id="fail_comments" class="tab-pane fade">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<td>留言編號</td>
-											<td>留言時間</td>
-											<td>相片/影片</td>
-											<td>留言說明</td>
-											<td>顧客帳號</td>
-											<td>顧客暱稱</td>
-											<td>審核狀態</td>
-											<td>審核</td>
-										</tr>
-									</thead>
-									<tbody> <!-- SQL generate content --> </tbody>
-								</table>
-							</div>
-							<div id="letter" class="tab-pane fade">
+						<?php } ?>
+							<div class="tab-pane fade">
 								<table class="table table-hover">
 									<thead>
 										<tr>
@@ -216,6 +257,16 @@
 				</div>
 			</div>
 		</section>
+		<?php
+				else:
+					print "您無權限觀看此頁面!";
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage_Customer.php>';
+				endif;
+			else:
+		        print "您無權限觀看此頁面!";
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage.php>';
+			endif;
+		?>
 	</body>
 	<!-- jquery -->
 	<script src="js/jquery-1.12.3.min.js"></script>

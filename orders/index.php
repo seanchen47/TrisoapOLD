@@ -17,6 +17,16 @@
 		<link href="css/style.css" rel="stylesheet">
 	</head>
 	<body id="page-top">
+		<?php
+			include("mysql_connect.php");
+			$EMAIL = $_SESSION['EMAIL'];
+			$CUSIDT = $_SESSION['CUSIDT'];
+			if($EMAIL != null):
+				if($CUSIDT == 'A'):
+					$queryCUSNM = "SELECT CUSNM FROM CUSMAS where EMAIL = '$EMAIL'";
+					$result = mysql_query($queryCUSNM);
+					$row = mysql_fetch_row($result);
+		?>
 		<nav class="navbar navbar-fixed-top nav-custom">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -31,13 +41,22 @@
 				<div class="collapse navbar-collapse navbar-main-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#">
+							<a href="HomePage_Manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
 						<li>
+							<!-- 要改成dropdown -->
+							<!-- 更新使用者資料、密碼 -->
 							<a href="#">
-								登入<i class="fa fa-angle-down" aria-hidden="true"></i>
+								<?php
+									echo $row[0]."，您好<br>";
+								?>
+							</a>
+						</li>
+						<li>
+							<a href="User_logout.php">
+								登出<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
 					</ul>
@@ -57,12 +76,12 @@
 						</div>
 						<div class="hidden-xs col-sm-8 col-md-6" id="pills">
 							<ul class="nav nav-pills">
-								<li class="active"><a data-toggle="pill" href="#all_orders">全部</a></li>
-								<li><a data-toggle="pill" href="#pending">未執行</a></li>
+								<li class="active"><a data-toggle="pill" href="#all">全部</a></li>
+								<li><a data-toggle="pill" href="#received">已收到</a></li>
 								<li><a data-toggle="pill" href="#processing">處理中</a></li>
-								<li><a data-toggle="pill" href="#paid">已付款</a></li>
-								<li><a data-toggle="pill" href="#overdue">已逾期</a></li>
-								<li><a data-toggle="pill" href="#shipped">已取貨</a></li>
+								<li><a data-toggle="pill" href="#out_of_stock">缺貨中</a></li>
+								<li><a data-toggle="pill" href="#done">已完成</a></li>
+								<li><a data-toggle="pill" href="#suspended">已中止</a></li>
 							</ul>
 						</div>
 						<div class="col-xs-7 col-sm-4 col-xs-offset-2 col-sm-offset-0">
@@ -84,7 +103,53 @@
 					</div>
 					<div class="row table-responsive">
 						<div class="tab-content">
-							<div id="all_orders" class="tab-pane fade in active">
+						<!-- use php for loop to generate each pill -->
+						<?php for($i = 0; $i < 6; $i++) { ?>
+						
+						<!-- 全部（已付款） -->
+						<?php switch($i):
+						case 0:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE PAYSTAT = '1'"; ?>
+							<div id="all" class="tab-pane fade in active">
+						<?php break; ?>
+						
+						<!-- 已收到 -->
+						<?php
+						case 1:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE ORDSTAT = 'E' AND PAYSTAT = '1'"; ?>
+							<div id="received" class="tab-pane fade">
+						<?php break; ?>
+
+						<!-- 處理中 -->
+						<?php
+						case 2:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE ORDSTAT = 'R' AND BACKSTAT = '0'"; ?>
+							<div id="processing" class="tab-pane fade">
+						<?php break; ?>
+
+						<!-- 缺貨中 -->
+						<?php
+						case 3:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE ORDSTAT = 'R' AND BACKSTAT = '1'"; ?>
+							<div id="out_of_stock" class="tab-pane fade">
+						<?php break; ?>
+
+						<!-- 已完成 -->
+						<?php
+						case 4:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE ORDSTAT = 'C'"; ?>
+							<div id="done" class="tab-pane fade">
+						<?php break; ?>
+
+						<!-- 已中止 -->
+						<?php
+						case 5:
+							$queryOrder = "SELECT * FROM ORDMAS WHERE ORDSTAT = 'F'"; ?>
+							<div id="suspended" class="tab-pane fade">
+						<?php break; ?>
+
+						<?php endswitch; ?>
+								<!-- pill content -->
 								<table class="table table-hover">
 									<thead>
 										<tr>
@@ -99,49 +164,86 @@
 										</tr>
 									</thead>
 									<tbody>
+										<?php
+									        $result = mysql_query($queryOrder);
+									        while($row = mysql_fetch_array($result)){
+									    ?>
 										<tr>
-											<td><a class="various fancybox.ajax" rel="group" href="#">b02705039</a></td>
-											<td>2016-05-15 11:37AM</td>
-											<td>處理中</td>
-											<td>未付款</td>
-											<td>未出貨</td>
-											<td>indian123</td>
-											<td>12 Paschimi Marg, Vasant Vihar New Delhi- 110057, India</td>
-											<td>&#36; 220</td>
+											<!-- 訂單編號 -->
+											<td>
+												<a class="various fancybox.ajax" rel="group" href="#">
+													<?php
+														echo $row['ORDNO'];
+													?>
+												</a>
+											</td>
+											<!-- 訂單時間 -->
+											<td>
+												<?php
+													// echo $row['ORDNO'];
+												?>
+											</td>
+											<!-- 訂單狀態 -->
+											<td>
+												<?php
+													echo $row['ORDSTAT'];
+												?>
+											</td>
+											<!-- 付款狀態 -->
+											<td>
+												<?php
+													echo $row['PAYSTAT'];
+												?>
+											</td>
+											<!-- 配送狀態 -->
+											<td>
+												<?php
+													// echo $row['ORDNO'];
+												?>
+											</td>
+											<!-- 顧客名稱 -->
+											<td>
+												<?php
+													// echo $row['ORDNO'];
+												?>
+											</td>
+											<!-- 顧客地址 -->
+											<td>
+												<?php
+													// echo $row['ORDNO'];
+												?>
+											</td>
+											<!-- 總計金額 -->
+											<td>
+												<!-- $ sign -->
+												&#36;
+												<?php
+													echo $row['TOTALAMT'];
+												?>
+											</td>
 										</tr>
+										<?php
+											}
+										?>
 									</tbody>
 								</table>
 							</div>
-							<div id="pending" class="tab-pane fade">
-								<table class="table table-hover">
-
-								</table>
-							</div>
-							<div id="processing" class="tab-pane fade">
-								<table class="table table-hover">
-
-								</table>
-							</div>
-							<div id="paid" class="tab-pane fade">
-								<table class="table table-hover">
-
-								</table>
-							</div>
-							<div id="overdue" class="tab-pane fade">
-								<table class="table table-hover">
-
-								</table>
-							</div>
-							<div id="shipped" class="tab-pane fade">
-								<table class="table table-hover">
-
-								</table>
-							</div>
+						<?php } ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		<?php
+				else:
+					print "您無權限觀看此頁面!";
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage_Customer.php>';
+				endif;
+			else:
+		        print "您無權限觀看此頁面!";
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage.php>';
+			endif;
+		?>
 	</body>
 	<!-- jquery -->
 	<script src="js/jquery-1.12.3.min.js"></script>
