@@ -16,7 +16,7 @@
 	</head>
 	<body id="page-top">
 		<?php
-			include("../php/mysql_connect.php");
+			include("../../methods/mysql_connect.php");
 			$EMAIL = $_SESSION['EMAIL'];
 			$CUSIDT = $_SESSION['CUSIDT'];
 			if($EMAIL != null):
@@ -39,7 +39,7 @@
 				<div class="collapse navbar-collapse navbar-main-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="../php/HomePage_Manager.php">
+							<a href="../../HomePage/HomePage_Manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
@@ -58,7 +58,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="User_logout.php">
+							<a href="../../methods/User_logout.php">
 								登出<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
@@ -260,11 +260,11 @@
 		<?php
 				else:
 					print "您無權限觀看此頁面!";
-		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage_Customer.php>';
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/HomePage_Customer.php>';
 				endif;
 			else:
 		        print "您無權限觀看此頁面!";
-		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../php/HomePage.php>';
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/HomePage.php>';
 			endif;
 		?>
 	</body>

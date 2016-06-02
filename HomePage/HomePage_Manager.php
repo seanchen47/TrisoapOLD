@@ -11,7 +11,7 @@
 			$result = mysql_query($queryCUSNM);
 			$row = mysql_fetch_row($result);
 			print "嗨嗨，這裡是三三主頁 <br>";
-			print "$row[0]，您好<br>";	
+			print "$row[0]，您好<br>";
 ?>
 普通功能：<br>
 <a href="../Product/Product.php">前往商品頁</a> <br>
@@ -23,7 +23,7 @@
 <a href="../methods/Update_Manager.php">前往管理管理員</a> <br>
 <a href="../methods/Update_ITEMMAS.php">前往管理商品</a> <br>
 <a href="../methods/Update_ORDMAS.php">前往管理訂單</a> <br>
-<a href="../methods/Update_MSGMAS.php">前往管理留心語</a> <br><br>
+<a href="../Message/MSGMAS/Update_MSGMAS.php">前往管理留心語</a> <br><br>
 <a href="../methods/User_logout.php">登出</a> <br>
 <?php
 		}
