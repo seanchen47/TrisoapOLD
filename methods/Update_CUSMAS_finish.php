@@ -46,10 +46,10 @@ if($EMAIL != null)
         if ($message == null){
                 echo "更新成功";
                 if($CUSIDT == 'A'){
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Manager.php>';
+                        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Manager.php>';
                 }
                 else{
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+                        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
                 }
         }
         else{
@@ -60,6 +60,6 @@ if($EMAIL != null)
 else
 {
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

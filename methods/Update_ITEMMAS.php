@@ -25,15 +25,15 @@ if($EMAIL != null){
 <a href="Edit_ITEMMAS.php">更新商品</a> <br>
 <a href="Delete_ITEMMAS.php">下架商品</a> <br>
 <a href="Upload_ITEMMAS.php">上市商品</a> <br>
-<a href="HomePage_Manager.php">返回主頁</a> <br>
+<a href="../HomePage/HomePage_Manager.php">返回主頁</a> <br>
 <?php
         }
         else{
                 echo '您無權限觀看此頁面!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
         }
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }

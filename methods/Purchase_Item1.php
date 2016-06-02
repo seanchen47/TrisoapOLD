@@ -42,17 +42,17 @@ if($EMAIL != null){
             echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
             echo "</form>";
 ?>
-<a href="Product.php">取消</a>
+<a href="../Product/Product.php">取消</a>
 <?php
         }
     }
     else{
         echo "此商品目前下架中";
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=Product.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../Product/Product.php>';
     }
 }
 else{
 	echo '請先登入或註冊!';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

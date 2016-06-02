@@ -4,5 +4,5 @@
 電子信箱：<input type="text" name="EMAIL" /> <br>
 密碼：<input type="password" name="CUSPW" /> <br>
 <input type="submit" name="button" value="登入" />
-<a href="HomePage.php">取消</a>
+<a href="../HomePage/HomePage.php">取消</a>
 </form>

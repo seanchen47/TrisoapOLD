@@ -16,17 +16,17 @@ if($EMAIL != null){
 <?php
 	if($CUSIDT == 'A'){
 ?>
-<a href="HomePage_Manager.php">取消</a>
+<a href="../HomePage/HomePage_Manager.php">取消</a>
 <?php
 	}
 	else{
 ?>
-<a href="HomePage_Customer.php">取消</a>
+<a href="../HomePage/HomePage_Customer.php">取消</a>
 <?php
 	}
 }
 else{
 	echo '您無權限觀看此頁面!';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

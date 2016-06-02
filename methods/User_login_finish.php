@@ -35,10 +35,10 @@ if($count == 0){
         $row = mysql_fetch_row($result);
         $_SESSION['CUSIDT'] = $row[0];
         if($row[0] == 'A'){
-                echo '<meta http-equiv=REFRESH CONTENT=1;url=HomePage_Manager.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=1;url=../HomePage/HomePage_Manager.php>';
         }
         else{
-                echo '<meta http-equiv=REFRESH CONTENT=1;url=HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=1;url=../HomePage/HomePage_Customer.php>';
         }
 }
 else

@@ -44,7 +44,7 @@ if($EMAIL != null){
             $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMPANYNM='Trisoap'";
             mysql_query($sql);
             echo "新增留心語成功";
-            echo '<meta http-equiv=REFRESH CONTENT=2;url=Message.php>';
+            echo '<meta http-equiv=REFRESH CONTENT=2;url=../Message/Message.php>';
         }
         else{
             echo "新增留心語失敗";
@@ -58,5 +58,5 @@ if($EMAIL != null){
 }
 else{
 	echo '您無權限觀看此頁面!';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }

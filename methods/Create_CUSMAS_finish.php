@@ -63,7 +63,7 @@ if($count == 0){
                 $_SESSION['EMAIL'] = $EMAIL;
                 $_SESSION['CUSIDT'] = 'B';
                 echo "新增成功";
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
         }
         else{
                 echo "新增失敗";

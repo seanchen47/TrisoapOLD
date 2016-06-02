@@ -22,23 +22,23 @@ if($EMAIL != null){
 				echo "成功加入購物車<br>";
 				include("Update_PRICE.php");
 ?>
-				<a href="Product.php">繼續購物</a> <br>
+				<a href="../Product/Product.php">繼續購物</a> <br>
 				<a href="Cashing.php">結帳</a> <br>
 <?php
 			}
 			else{
 				echo "加入購物車失敗<br>";
-				echo '<meta http-equiv=REFRESH CONTENT=2;url=Product.php>';
+				echo '<meta http-equiv=REFRESH CONTENT=2;url=../Product/Product.php>';
 			}
 		}
 	}
 	else{
 		echo "將把您導向商品頁<br>";
-		echo '<meta http-equiv=REFRESH CONTENT=2;url=Product.php>';
+		echo '<meta http-equiv=REFRESH CONTENT=2;url=../Product/Product.php>';
 	}
 }
 else{
 	echo '您無權限觀看此頁面!';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

@@ -19,15 +19,15 @@ if($EMAIL != null){
 ?>
 <a href="Create_Manager.php">新增管理員</a> <br>
 <a href="Delete_Manager.php">刪除管理員</a> <br>
-<a href="HomePage_Manager.php">返回主頁</a> <br>
+<a href="../HomePage/HomePage_Manager.php">返回主頁</a> <br>
 <?php
         }
         else{
                 echo '您無權限觀看此頁面!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
         }
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }

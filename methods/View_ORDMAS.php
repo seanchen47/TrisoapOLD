@@ -29,11 +29,11 @@ if($EMAIL != null){
         echo "訂單總值：$row[10]<br>";
         echo "付款狀態：$row[6]<br>";
 ?>
-<a href="ORDMAS.php">返回</a>
+<a href="../Order/ORDMAS.php">返回</a>
 <?php
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

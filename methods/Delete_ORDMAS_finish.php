@@ -29,7 +29,7 @@ if($EMAIL != null){
         }
         if($message == null){
                 echo "取消成功";
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=ORDMAS.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../Order/ORDMAS.php>';
         }
         else{
                 echo $message;
@@ -38,6 +38,6 @@ if($EMAIL != null){
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
 ?>

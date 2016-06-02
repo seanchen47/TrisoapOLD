@@ -29,15 +29,15 @@ if($EMAIL != null){
 <a href="Update_ORDMAS_1.php">缺貨中訂單</a> <br>
 <a href="Update_ORDMAS_C.php">已完成訂單</a> <br>
 <a href="Update_ORDMAS_F.php">強制結束訂單</a> <br>
-<a href="HomePage_Manager.php">返回主頁</a> <br>
+<a href="../HomePage/HomePage_Manager.php">返回主頁</a> <br>
 <?php
         }
         else{
                 echo '您無權限觀看此頁面!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
         }
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
 }
