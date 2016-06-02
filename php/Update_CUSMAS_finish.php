@@ -7,38 +7,41 @@ $CUSIDT = $_SESSION['CUSIDT'];
 
 if($EMAIL != null)
 {
-        $CUSNM = $_POST['CUSNM'];
-        $CUSADD = $_POST['CUSADD'];
+        $CUSNM = htmlentities($_POST['CUSNM']);
+        $CUSADD = htmlentities($_POST['CUSADD']);
         $CUSTYPE = $_POST['CUSTYPE'];
-        $TEL = $_POST['TEL'];
-        $SPEINS = $_POST['SPEINS'];
-        $TAXID = $_POST['TAXID'];
+        $TEL = htmlentities($_POST['TEL']);
+        $SPEINS = htmlentities($_POST['SPEINS']);
+        $TAXID = htmlentities($_POST['TAXID']);
+        $UPDATEDATE = date("Y-m-d H:i:s");
 
         $message = null;
-        $sql = "update CUSMAS set CUSNM='$CUSNM' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET CUSNM='$CUSNM' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新姓名失敗<br>';
         }
-        $sql = "update CUSMAS set CUSADD='$CUSADD' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET CUSADD='$CUSADD' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新地址失敗<br>';
         }
-        $sql = "update CUSMAS set CUSTYPE='$CUSTYPE' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET CUSTYPE='$CUSTYPE' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新膚質失敗<br>';
         }
-        $sql = "update CUSMAS set TEL='$TEL' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET TEL='$TEL' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新電話失敗<br>';
         }
-        $sql = "update CUSMAS set SPEINS='$SPEINS' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET SPEINS='$SPEINS' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新特殊要求失敗<br>';
         }
-        $sql = "update CUSMAS set TAXID='$TAXID' WHERE EMAIL='$EMAIL'";
+        $sql = "UPDATE CUSMAS SET TAXID='$TAXID' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
                 $message = $message . '更新統一編號失敗<br>';
         }
+        $sql = "UPDATE CUSMAS SET UPDATEDATE='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
+        mysql_query($sql);
 
         if ($message == null){
                 echo "更新成功";

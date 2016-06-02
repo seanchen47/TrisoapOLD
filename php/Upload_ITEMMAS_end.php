@@ -16,9 +16,9 @@ if($EMAIL != null){
                 if($PW != $row[0]){
                         $message = $message . '密碼錯誤<br>';
                 }
-
+                $UPDATEDATE = date("Y-m-d H:i:s");
                 if($message == null){
-                        $sql = "UPDATE ITEMMAS SET ACTCODE='1' WHERE ITEMNO='$newITEMNO'";
+                        $sql = "UPDATE ITEMMAS SET ACTCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ITEMNO='$newITEMNO'";
                         unset($_SESSION['newITEMNO']);
                         if(mysql_query($sql)){
                                 echo '上市成功';

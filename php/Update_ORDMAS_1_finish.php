@@ -10,8 +10,9 @@ if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $ORDNO = $_POST['ORDNO'];
                 $ORDSTAT = $_POST['ORDSTAT'];
+                $UPDATEDATE = date("Y-m-d H:i:s");
                 if($ORDSTAT == 'F')
-                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT' WHERE ORDNO='$ORDNO'";
+                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if($ORDSTAT == 'C'){
                         $queryDetail = "SELECT * FROM ORDITEMMAS WHERE ORDNO='$ORDNO'";
                         $Detail = mysql_query($queryDetail);
@@ -23,11 +24,11 @@ if($EMAIL != null){
                                 $AMT = mysql_fetch_row($result);
                                 if($AMT[7] == 0){
                                         $message = $message . ""$AMT[1]"目前下架中，儲存失敗<br>";
-                                        $sql = "UPDATE ORDMAS SET BACKCODE='1' WHERE ORDNO='$ORDNO'";
+                                        $sql = "UPDATE ORDMAS SET BACKCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                                 }
                                 elseif($AMT[2] - $ITEMAMT < 0){
                                         $message = $message . ""$AMT[1]"數量不足，儲存失敗<br>";
-                                        $sql = "UPDATE ORDMAS SET BACKCODE='1' WHERE ORDNO='$ORDNO'";
+                                        $sql = "UPDATE ORDMAS SET BACKCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                                 }
                         }
                         if($message == null){

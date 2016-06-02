@@ -6,33 +6,40 @@ $EMAIL = $_SESSION['EMAIL'];
 $message = null;
 
 if($EMAIL != null){
-    $MSGTXT = $_POST['MSGTXT'];
-    $MSGVIDEO = $_POST['MSGVIDEO'];
+    $MSGTXT = htmlentities($_POST['MSGTXT']);
+    $MSGVIDEO = htmlentities($_POST['MSGVIDEO']);
     $MSGPHOTOTYPE = $_FILES["MSGPHOTO"]["type"];
     $file = fopen($_FILES["MSGPHOTO"]["tmp_name"], "rb");
     $fileContents = fread($file, filesize($_FILES["MSGPHOTO"]["tmp_name"])); 
     fclose($file);
     $MSGPHOTO = base64_encode($fileContents);
+    $CREATEDATE = date("Y-m-d H:i:s");
     if($MSGTXT == null){
         $message = $message . '留言文字欄位不可空白<br>';
     }
-    if($MSGPHOTO == null && $MSGVIDEO == null){
-        $message = $message . '留言照片及留言影片請擇一上傳<br>';
-    }
-    if($MSGPHOTO != null && $MSGVIDEO != null){
-        $message = $message . '由於您同時上傳照片及影片，系統已自動捨棄您的留言影片';
-    }
-    if($message == null || $message == '由於您同時上傳照片及影片，系統已自動捨棄您的留言影片'){
-        if($message != null)
-            echo $message;
+    if($message == null){
+        $savetype = 0;
         $sql = "SELECT * FROM OWNMAS where COMPANYNM='Trisoap'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);
-        if($MSGPHOTO != null){
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGPHOTO, MSGPHOTOTYPE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE')";
+        if($MSGPHOTO == null && $MSGVIDEO == null)
+            $savetype = 1;
+        elseif($MSGPHOTO != null && $MSGVIDEO == null)
+            $savetype = 2;
+        elseif($MSGPHOTO == null && $MSGVIDEO != null)
+            $savetype = 3;
+        if($savetype = 0){
+            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$MSGVIDEO', '$CREATEDATE')";
         }
-        else{
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGVIDEO) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGVIDEO')";
+        elseif($savetype = 1){
+            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$CREATEDATE')";
+        }
+        elseif($savetype = 2){
+            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$CREATEDATE')";
+        }
+        else{    
+            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGVIDEO', '$CREATEDATE')";
+        }
         }
         if(mysql_query($enter)){
             $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMPANYNM='Trisoap'";

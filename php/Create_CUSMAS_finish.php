@@ -5,19 +5,21 @@ include("mysql_connect.php");
 $count = 0;
 $message = '';
 
-$CUSNM = $_POST['CUSNM'];
-$CUSPW1 = $_POST['CUSPW1'];
-$CUSPW2 = $_POST['CUSPW2'];
-$CUSADD = $_POST['CUSADD'];
+$CUSNM = htmlentities($_POST['CUSNM']);
+$CUSPW1 = htmlentities($_POST['CUSPW1']);
+$CUSPW2 = htmlentities($_POST['CUSPW2']);
+$CUSADD = htmlentities($_POST['CUSADD']);
 $CUSTYPE = $_POST['CUSTYPE'];
-$CUSBIRTHY = $_POST['CUSBIRTHY'];
-$CUSBIRTHM = $_POST['CUSBIRTHM'];
-$CUSBIRTHD = $_POST['CUSBIRTHD'];
-$TEL = $_POST['TEL'];
-$EMAIL = $_POST['EMAIL'];
-$TAXID = $_POST['TAXID'];
+$CUSBIRTHY = htmlentities($_POST['CUSBIRTHY']);
+$CUSBIRTHM = htmlentities($_POST['CUSBIRTHM']);
+$CUSBIRTHD = htmlentities($_POST['CUSBIRTHD']);
+$TEL = htmlentities($_POST['TEL']);
+$EMAIL = htmlentities($_POST['EMAIL']);
+$TAXID = htmlentities($_POST['TAXID']);
 $KNOWTYPE = $_POST['KNOWTYPE'];
-$SPEINS = $_POST['SPEINS'];
+$SPEINS = htmlentities($_POST['SPEINS']);
+$CREATEDATE = date("Y-m-d H:i:s");
+$UPDATEDATE = date("Y-m-d H:i:s");
 
 if($EMAIL == null){
         $count += 1;
@@ -56,7 +58,7 @@ if($KNOWTYPE == null){
 }
 
 if($count == 0){
-        $sql = "insert into CUSMAS (CUSNM, CUSPW, CUSADD, CUSTYPE, CUSBIRTHY, CUSBIRTHM, CUSBIRTHD, TEL, EMAIL, TAXID, KNOWTYPE, SPEINS) values ('$CUSNM', '$CUSPW1', '$CUSADD', '$CUSTYPE', '$CUSBIRTHY', '$CUSBIRTHM', '$CUSBIRTHD', '$TEL', '$EMAIL', '$TAXID', '$KNOWTYPE', '$SPEINS')";
+        $sql = "insert into CUSMAS (CUSNM, CUSPW, CUSADD, CUSTYPE, CUSBIRTHY, CUSBIRTHM, CUSBIRTHD, TEL, EMAIL, TAXID, KNOWTYPE, SPEINS, CREATEDATE, UPDATEDATE) values ('$CUSNM', '$CUSPW1', '$CUSADD', '$CUSTYPE', '$CUSBIRTHY', '$CUSBIRTHM', '$CUSBIRTHD', '$TEL', '$EMAIL', '$TAXID', '$KNOWTYPE', '$SPEINS', '$CREATEDATE', '$UPDATEDATE')";
         if(mysql_query($sql)){
                 $_SESSION['EMAIL'] = $EMAIL;
                 $_SESSION['CUSIDT'] = 'B';

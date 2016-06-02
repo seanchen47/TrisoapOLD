@@ -10,8 +10,9 @@ if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $ORDNO = $_POST['ORDNO'];
                 $ORDSTAT = $_POST['ORDSTAT'];
+                $UPDATEDATE = date("Y-m-d H:i:s");
                 if($ORDSTAT == 'B')
-                        $sql = "UPDATE ORDMAS SET BACKCODE='1' WHERE ORDNO='$ORDNO'";
+                        $sql = "UPDATE ORDMAS SET BACKCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 elseif($ORDSTAT == 'C'){
                         $queryDetail = "SELECT * FROM ORDITEMMAS WHERE ORDNO='$ORDNO'";
                         $Detail = mysql_query($queryDetail);
@@ -23,12 +24,12 @@ if($EMAIL != null){
                                 $AMT = mysql_fetch_row($result);
                                 if($AMT[7] == 0){
                                         $message = $message . ""$AMT[1]"目前下架中，已調整訂單狀態為強制結束<br>";
-                                        $sql = "UPDATE ORDMAS SET ORDSTAT='F' WHERE ORDNO='$ORDNO'";
+                                        $sql = "UPDATE ORDMAS SET ORDSTAT='F', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                                         break;
                                 }
                                 elseif($AMT[2] - $ITEMAMT < 0){
                                         $message = $message . ""$AMT[1]"數量不足，已調整訂單狀態為缺貨中";
-                                        $sql = "UPDATE ORDMAS SET BACKCODE='1' WHERE ORDNO='$ORDNO'";
+                                        $sql = "UPDATE ORDMAS SET BACKCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                                 }
                         }
                         if($message == null){
@@ -37,7 +38,7 @@ if($EMAIL != null){
                         }
                 }
                 else
-                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT' WHERE ORDNO='$ORDNO'";
+                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 mysql_query($sql);
                 if($message == null)
                         echo "儲存成功";

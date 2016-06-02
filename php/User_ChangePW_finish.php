@@ -11,9 +11,10 @@ if($EMAIL != null){
         $queryEMAIL = "SELECT CUSPW FROM CUSMAS where EMAIL = '$EMAIL'";
         $result = mysql_query($queryEMAIL);
         $row = mysql_fetch_row($result);
-        $CUSPW = $_POST['CUSPW'];
-        $newCUSPW1 = $_POST['newCUSPW1'];
-        $newCUSPW2 = $_POST['newCUSPW2'];
+        $CUSPW = htmlentities($_POST['CUSPW']);
+        $newCUSPW1 = htmlentities($_POST['newCUSPW1']);
+        $newCUSPW2 = htmlentities($_POST['newCUSPW2']);
+        $UPDATEDATE = date("Y-m-d H:i:s");
 
         if($CUSPW == null){
                 $count += 1;
@@ -37,7 +38,7 @@ if($EMAIL != null){
         }
 
         if($count == 0){
-                $sql = "update CUSMAS set CUSPW=$newCUSPW1 WHERE EMAIL='$EMAIL'";
+                $sql = "UPDATE CUSMAS SET CUSPW=$newCUSPW1, UPDATEDATE='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
                 if(mysql_query($sql))
                 {
                         echo '更新成功';

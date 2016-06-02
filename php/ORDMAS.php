@@ -8,7 +8,7 @@ $EMAIL = $_SESSION['EMAIL'];
 $CUSIDT = $_SESSION['CUSIDT'];
 if($EMAIL != null){
         echo "您的所有訂單：<br>";
-        $queryOrder = "SELECT * FROM ORDMAS where CUSNO='$EMAIL'";
+        $queryOrder = "SELECT * FROM ORDMAS WHERE CUSNO='$EMAIL' AND ACTCODE='1'";
         $result = mysql_query($queryOrder);
         while($row = mysql_fetch_array($result)){
                 $ORDNO = $row['ORDNO'];

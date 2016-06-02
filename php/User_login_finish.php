@@ -5,8 +5,8 @@ include("mysql_connect.php");
 $count = 0;
 $message = null;
 
-$EMAIL = $_POST['EMAIL'];
-$CUSPW = $_POST['CUSPW'];
+$EMAIL = htmlentities($_POST['EMAIL']);
+$CUSPW = htmlentities($_POST['CUSPW']);
 
 if($EMAIL == null){
         $count += 1;

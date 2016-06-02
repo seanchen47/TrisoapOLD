@@ -3,9 +3,30 @@
 <?php
 include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
-$ORDNO = $_POST['ORDNO'];
+$ORDNO = htmlentities($_POST['ORDNO']);
 $message = null;
-$number = 0;
+
+function ViewORDITEM($number){
+        include("mysql_connect.php");
+        $ORDNO = htmlentities($_POST['ORDNO']);
+        $ITEMNOnumber = 'ITEMNO' . "$number";
+        $ITEMAMTnumber = 'ITEMAMT' . "$number";
+        $sql = "SELECT * FROM ORDITEMMAS where ORDNO='$ORDNO' and ITEMNO='$number'";
+        $result = mysql_query($sql);
+        $row = mysql_fetch_array($result);
+        echo "商品編號：$number <br>";
+        echo "<input type=\"hidden\" name=\"$ITEMNOnumber\" value=\"$number\" />";
+        $queryORDITEM = "SELECT ITEMNM FROM ITEMMAS where ITEMNO='$number'";
+        $queryName = mysql_query($queryORDITEM);
+        $name = mysql_fetch_row($queryName);
+        echo "商品名稱：$name[0] <br>";
+        if($row == false)                        
+                echo "商品數量：<input type=\"text\" name=\"$ITEMAMTnumber\" value=\"0\" /> <br><br>";
+        else{
+                $ITEMAMT = $row['ITEMAMT'];
+                echo "商品數量：<input type=\"text\" name=\"$ITEMAMTnumber\" value=\"$ITEMAMT\" /> <br><br>";
+        }
+}
 
 if($EMAIL != null){
         if($ORDNO == null){
@@ -13,25 +34,14 @@ if($EMAIL != null){
         }
         if($message == null){
                 echo "<form name=\"form\" method=\"post\" action=\"Edit_ORDMAS_end.php\">";
-                $sql = "SELECT * FROM ORDITEMMAS where ORDNO='$ORDNO'";
-                $result = mysql_query($sql);
-                while($row = mysql_fetch_array($result)){
-                        $ITEMNO = $row['ITEMNO'];
-                        $ITEMNOnumber = 'ITEMNO' . "$number";
-                        echo "商品編號：$ITEMNO <br>";
-                        echo "<input type=\"hidden\" name=\"$ITEMNOnumber\" value=\"$ITEMNO\" />";
-                        $queryORDITEM = "SELECT ITEMNM FROM ITEMMAS where ITEMNO='$ITEMNO'";
-                        $queryName = mysql_query($queryORDITEM);
-                        $name = mysql_fetch_row($queryName);
-                        echo "商品名稱：$name[0] <br>";
-                        $ITEMAMTnumber = 'ITEMAMT' . "$number";
-                        echo "商品數量：<input type=\"text\" name=\"$ITEMAMTnumber\" value=\"$row[2]\" /> <br><br>";
-                        $number += 1;
-                }
+                ViewORDITEM('1');
+                ViewORDITEM('2');
+                ViewORDITEM('3');
+                ViewORDITEM('4');
                 echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
                 echo "</form>";
                 $_SESSION['ORDNO'] = $ORDNO;
-                $_SESSION['number'] = $number - 1;
+                $_SESSION['number'] = 4;
 ?>
 <a href="Edit_ORDMAS.php">取消</a>
 <?php

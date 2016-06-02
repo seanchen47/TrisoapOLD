@@ -5,7 +5,7 @@ include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
 $ITEMNO = $_SESSION['ITEMNO'];
 $ORDNO = $_SESSION['ORDNO'];
-$ITEMAMT = $_POST['ITEMAMT'];
+$ITEMAMT = htmlentities($_POST['ITEMAMT']);
 
 if($EMAIL != null){
 	if($ITEMNO != null){
@@ -14,7 +14,9 @@ if($EMAIL != null){
 			echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS.php>';
 		}
 		else{
-			$sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT) values ('$ORDNO', '$ITEMNO', '$ITEMAMT')";
+			$CREATEDATE = date("Y-m-d H:i:s");
+        	$UPDATEDATE = date("Y-m-d H:i:s");
+			$sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
 			unset($_SESSION['ITEMNO']);
 			if(mysql_query($sql)){
 				echo "成功加入購物車<br>";

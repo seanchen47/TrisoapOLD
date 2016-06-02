@@ -10,9 +10,10 @@ $message = null;
 if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $INVOICENO = $_POST['INVOICENO'];
+                $UPDATEDATE = date("Y-m-d H:i:s");
                 $sql = "UPDATE ORDMAS SET INVOICENO='$INVOICENO' WHERE ORDNO='$ORDNO'";
                 mysql_query($sql);
-                $sql = "UPDATE ORDMAS SET ORDSTAT='C' WHERE ORDNO='$ORDNO'";
+                $sql = "UPDATE ORDMAS SET ORDSTAT='C', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if(mysql_query($sql)){
                         $queryDetail = "SELECT * FROM ORDITEMMAS WHERE ORDNO='$ORDNO'";
                         $Detail = mysql_query($queryDetail);

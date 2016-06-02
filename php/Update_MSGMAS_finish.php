@@ -9,16 +9,20 @@ $message = null;
 
 if($EMAIL != null){
         if($CUSIDT == 'A'){
+                $PUBLICDATE = date("Y-m-d H:i:s");
                 while($number >= 0){
                         $MSGNOnumber = 'MSGNO' . "$number";
                         $MSGSTATnumber = 'MSGSTAT' . "$number";
                         $MSGNO = $_POST["$MSGNOnumber"];
                         $MSGSTAT = $_POST["$MSGSTATnumber"];
                         if($MSGSTAT == 'F'){
-                                $sql = "update MSGMAS set ACTCODE='0' WHERE MSGNO='$MSGNO'";
+                                $sql = "UPDATE MSGMAS SET ACTCODE='0' WHERE MSGNO='$MSGNO'";
+                        }
+                        elseif($MSGSTAT == 'D'){
+                                $sql = "UPDATE MSGMAS SET MSGSTAT='$MSGSTAT', PUBLICDATE='$PUBLICDATE' WHERE MSGNO='$MSGNO'";
                         }
                         else{
-                                $sql = "update MSGMAS set MSGSTAT='$MSGSTAT' WHERE MSGNO='$MSGNO'";
+                                $sql = "UPDATE MSGMAS SET MSGSTAT='$MSGSTAT' WHERE MSGNO='$MSGNO'";
                         }
                         if(!mysql_query($sql)){
                                 $message = $message . '儲存失敗<br>';

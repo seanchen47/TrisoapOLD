@@ -11,8 +11,8 @@ $result = mysql_query($queryORDITEM);
 while($row = mysql_fetch_array($result)){
 	$ITEMNO = $row['ITEMNO'];
 	$queryMONEY = "SELECT PRICE FROM ITEMMAS where ITEMNO='$ITEMNO'";
-	$result = mysql_query($queryMONEY);
-	$ITEMPRICE = mysql_fetch_row($result);
+	$end = mysql_query($queryMONEY);
+	$ITEMPRICE = mysql_fetch_row($end);
 	$price += ($row['ITEMAMT'] * $ITEMPRICE[0]);
 }
 $TOTALPRICE = $price;

@@ -11,11 +11,13 @@ $result = mysql_query($queryMessage);
 while($row = mysql_fetch_array($result)){
 	echo "留言編號:".$row['MSGNO']." 顧客編號:".$row['CUSNO']." 留言文字:".$row['MSGTXT']." 留言時間:".$row['CREATEDATE']."";
 	if($row['MSGVIDEO'] == null){
-		$PHOTOTYPE = $row['PHOTOTYPE'];
-		$PHOTO = base64_decode($row['PHOTO']);
-		echo " 留言照片:";
-		// echo $PHOTO;
-		echo " </br>";
+		if($row['MSGPHOTO'] != null){
+			$PHOTOTYPE = $row['PHOTOTYPE'];
+			$PHOTO = base64_decode($row['PHOTO']);
+			echo " 留言照片:";
+			// echo $PHOTO;
+			echo " </br>";
+		}
 	}
 	else{
 		echo " 留言影片:";

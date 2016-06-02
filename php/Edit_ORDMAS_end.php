@@ -9,25 +9,38 @@ $message = null;
 $price = 0;
 
 if($EMAIL != null){
-        $queryORDNO = "SELECT * FROM ORDMAS where ORDNO='$ORDNO'";
+        $queryORDNO = "SELECT * FROM ORDMAS WHERE ORDNO='$ORDNO'";
         $result = mysql_query($queryORDNO);
-        $row = mysql_fetch_row($result);
-        if($row[5] != 'E'){
+        $row = mysql_fetch_array($result);
+        if($row['ORDSTAT'] != 'E'){
                 $message = $message . '此訂單已進入執行狀態，故無法更新<br>';
         }
-        if($row[6] == '1'){
+        if($row['PAYSTAT'] == '1'){
                 $message = $message . '無法更新已付款之訂單<br>';
         }
         unset($_SESSION['ORDNO']);
         if($message == null){
-                while($number >= 0){
+                while($number > 0){
+                        $CREATEDATE = date("Y-m-d H:i:s");
+                        $UPDATEDATE = date("Y-m-d H:i:s");
                         $ITEMNOnumber = 'ITEMNO' . "$number";
                         $ITEMAMTnumber = 'ITEMAMT' . "$number";
                         $ITEMNO = $_POST["$ITEMNOnumber"];
-                        $ITEMAMT = $_POST["$ITEMAMTnumber"];
-                        $sql = "update ORDITEMMAS set ITEMAMT='$ITEMAMT' WHERE ITEMNO='$ITEMNO'";
-                        if(!mysql_query($sql)){
-                                $message = $message . '更新失敗<br>';
+                        $ITEMAMT = htmlentities($_POST["$ITEMAMTnumber"]);
+                        $sql = "SELECT * FROM ORDITEMMAS WHERE ORDNO='$ORDNO' AND ITEMNO='$number'";
+                        $result = mysql_query($sql);
+                        $row = mysql_fetch_row($result);
+                        if($row != false)
+                                $sql = "UPDATE ORDITEMMAS SET ITEMAMT='$ITEMAMT', UPDATEDATE='$UPDATEDATE' WHERE ITEMNO='$ITEMNO'";
+                        else{
+                                if($ITEMAMT != '0')
+                                        $sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
+                                else
+                                        $sql = null;
+                        }
+                        if($sql != null){
+                                if(!mysql_query($sql))
+                                        $message = $message . '更新失敗<br>';
                         }
                 $number -= 1;
                 }

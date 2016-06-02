@@ -10,6 +10,7 @@ if($EMAIL != null){
         $queryORDNO = "SELECT * FROM ORDMAS where ORDNO='$ORDNO'";
         $result = mysql_query($queryORDNO);
         $row = mysql_fetch_row($result);
+        $UPDATEDATE = date("Y-m-d H:i:s");
         if($row[5] != 'E'){
                 $message = $message . '此訂單已進入執行狀態，故無法取消<br>';
         }
@@ -17,7 +18,7 @@ if($EMAIL != null){
                 $message = $message . '無法取消已付款之訂單<br>';
         }
         if($message == null){
-                $sql = "update ORDMAS set ACTCODE='0' WHERE ORDNO='$ORDNO'";
+                $sql = "update ORDMAS set ACTCODE='0', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if(!mysql_query($sql)){
                         $message = $message . '刪除失敗<br>';
                 }

@@ -9,10 +9,11 @@ if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $ORDNO = $_POST['ORDNO'];
                 $ORDSTAT = $_POST['ORDSTAT'];
+                $UPDATEDATE = date("Y-m-d H:i:s");
                 if($ORDSTAT == 'D')
-                        $sql = "UPDATE ORDMAS SET ACTCODE='0' WHERE ORDNO='$ORDNO'";
+                        $sql = "UPDATE ORDMAS SET ACTCODE='0', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 else
-                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT' WHERE ORDNO='$ORDNO'";
+                        $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if(mysql_query($sql))
                         echo "儲存成功";
                 else

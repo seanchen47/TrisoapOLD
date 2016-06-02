@@ -3,15 +3,17 @@
 <?php
 include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
-$ORDTYPE = $_POST['ORDTYPE'];
-$ORD_INST = $_POST['ORD_INST'];
+$ORDTYPE = htmlentities($_POST['ORDTYPE']);
+$ORD_INST = htmlentities($_POST['ORD_INST']);
 if($EMAIL != null){
 	$sql = "SELECT * FROM OWNMAS where COMPANYNM='Trisoap'";
     $result = mysql_query($sql);
     $row = mysql_fetch_row($result);
+    $CREATEDATE = date("Y-m-d H:i:s");
+    $UPDATEDATE = date("Y-m-d H:i:s");
     if($ORDTYPE == 'G'){
         $SHIPFEE = 20;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
     		$sql = "UPDATE OWNMAS SET NORDNOG=NORDNOG+1 where COMPANYNM='Trisoap'";
     		mysql_query($sql);
@@ -26,7 +28,7 @@ if($EMAIL != null){
     }
     else{
         $SHIPFEE = 50;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
     		$sql = "UPDATE OWNMAS SET NORDNOS=NORDNOS+1 where COMPANYNM='Trisoap'";
     		mysql_query($sql);
