@@ -7,6 +7,7 @@
 	$CUSIDT = $_SESSION['CUSIDT'];
 	if($EMAIL != null){
 		if($CUSIDT == 'A'){
+			unset($_SESSION['ORDNO']);
 			$queryCUSNM = "SELECT CUSNM FROM CUSMAS where EMAIL = '$EMAIL'";
 			$result = mysql_query($queryCUSNM);
 			$row = mysql_fetch_row($result);
