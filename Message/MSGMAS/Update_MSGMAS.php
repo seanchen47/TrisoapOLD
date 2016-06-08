@@ -201,7 +201,7 @@
 												?>
 											</td>
 											<!-- 審核狀態 default: 等待 -->
-											<td>等待</td>
+											<td id="current_status">等待</td>
 											<!-- 審核dropdown -->
 											<td>
 												<select name="check" id="status" onchange="changeStatus()">
