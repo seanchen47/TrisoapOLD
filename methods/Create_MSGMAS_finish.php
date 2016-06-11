@@ -44,6 +44,14 @@ if($EMAIL != null){
             $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMPANYNM='Trisoap'";
             mysql_query($sql);
             echo "新增留心語成功";
+            mb_internal_encoding("utf-8");
+            $to="$EMAIL";
+            $subject=mb_encode_mimeheader("已收到您的留心語","utf-8");
+            $message="信件內容";
+            $headers="MIME-Version: 1.0\r\n";
+            $headers.="Content-type: text/html; charset=utf-8\r\n";
+            $headers.="From:".mb_encode_mimeheader("三三吾鄉手工皂","utf-8")."<寄件者電子郵件>\r\n";
+            mail($to,$subject,$message,$headers);
             echo '<meta http-equiv=REFRESH CONTENT=2;url=../Message/Message.php>';
         }
         else{
