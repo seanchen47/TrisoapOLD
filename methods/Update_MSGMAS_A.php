@@ -10,7 +10,7 @@ $number = 0;
 if($EMAIL != null){
         if($CUSIDT == 'A'){
         		echo "待審核留言：<br>";
-                echo "<form name=\"form\" method=\"post\" action=\"Update_MSGMAS_finish.php\">";
+                echo "<form name=\"form\" method=\"post\" action=\"Update_MSGMAS_A_finish.php\">";
                 $queryMSGMAS = "SELECT * FROM MSGMAS WHERE MSGSTAT='A' AND ACTCODE='1'";
                 $result = mysql_query($queryMSGMAS);
                 while($row = mysql_fetch_array($result)){
