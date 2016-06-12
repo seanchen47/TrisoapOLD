@@ -4,7 +4,7 @@
 <?php
 include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
-$ORDNO = $_SESSION['ORDNO'];
+$ORDNO = $_POST['ORDNO'];
 if($EMAIL != null){
         $queryOrder = "SELECT * FROM ORDMAS where ORDNO='$ORDNO'";
         $result = mysql_query($queryOrder);

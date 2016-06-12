@@ -44,13 +44,29 @@ if($EMAIL != null)
         mysql_query($sql);
 
         if ($message == null){
-                echo "更新成功";
-                if($CUSIDT == 'A'){
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Manager.php>';
-                }
-                else{
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
-                }
+                //echo '更新成功';
+                        if($CUSIDT == 'A'){          
+?>
+                                <script>
+                                        //function myFunction() {
+                                        alert("資料修改成功");
+                                        //}
+                                </script>
+<?php
+                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_manager.php>';
+
+                        }
+                        else{
+                                
+?>
+                                <script>
+                                        //function myFunction() {
+                                        alert("資料修改成功");
+                                        //}
+                                </script>
+<?php
+                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_customer.php>';
+                        }
         }
         else{
                 echo $message;

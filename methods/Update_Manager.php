@@ -19,7 +19,7 @@ if($EMAIL != null){
 ?>
 <a href="Create_Manager.php">新增管理員</a> <br>
 <a href="Delete_Manager.php">刪除管理員</a> <br>
-<a href="../HomePage/HomePage_Manager.php">返回主頁</a> <br>
+<a href="../Homepages/index_manager.php">返回主頁</a> <br>
 <?php
         }
         else{

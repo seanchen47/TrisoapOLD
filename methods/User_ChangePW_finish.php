@@ -38,15 +38,31 @@ if($EMAIL != null){
         }
 
         if($count == 0){
-                $sql = "UPDATE CUSMAS SET CUSPW=$newCUSPW1, UPDATEDATE='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
+                $sql = "UPDATE CUSMAS SET CUSPW = '$newCUSPW1', UPDATEDATE ='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
                 if(mysql_query($sql))
                 {
-                        echo '更新成功';
-                        if($CUSIDT == 'A'){
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Manager.php>';
+                        //echo '更新成功';
+                        if($CUSIDT == 'A'){          
+?>
+                                <script>
+                                        //function myFunction() {
+                                        alert("密碼修改成功，請重新登入");
+                                        //}
+                                </script>
+<?php
+                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.html>';
+
                         }
                         else{
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
+                                
+?>
+                                <script>
+                                        //function myFunction() {
+                                        alert("密碼修改成功，請重新登入");
+                                        //}
+                                </script>
+<?php
+                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.html>';
                         }
                         
                 }

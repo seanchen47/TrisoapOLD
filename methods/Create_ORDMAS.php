@@ -4,19 +4,18 @@
 <?php
 include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
-$CUSIDT = $_SESSION['CUSIDT'];
+//$CUSIDT = $_SESSION['CUSIDT'];
 if($EMAIL != null){
 	echo "<form name=\"form\" method=\"post\" action=\"Create_ORDMAS_finish.php\">";
-    echo "<input type=\"hidden\" name=\"ORDTYPE\" value=\"R\" /> <br>";
-    // echo "訂單種類：";
-    // echo "<option value=\"G\">正常</option>";
-	// echo "<option value=\"S\">特別處理</option> </select>";
-	// echo "  選擇特別處理將需要額外的費用<br>";
-    echo "備註：<textarea name=\"ORD_INST\" cols=\"45\" rows=\"5\"></textarea> <br>";
+    echo "訂單種類*：<select name=\"ORDTYPE\" /> <br>";
+    echo "<option value=\"G\">正常</option>";
+	echo "<option value=\"S\">特別處理</option> </select>";
+	echo "  選擇特別處理將需要額外的費用<br>";
+    echo "額外指令：<textarea name=\"ORD_INST\" cols=\"45\" rows=\"5\"></textarea> <br>";
     echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
     echo "</form>";
 ?>
-<a href="../Order/ORDMAS.php">取消</a>
+<a href="../Homepages/product_customer.php">取消</a>
 <?php
 }
 else{

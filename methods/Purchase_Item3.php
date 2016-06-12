@@ -44,7 +44,7 @@ if($EMAIL != null){
                 echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
                 echo "</form>";
     ?>
-    <a href="../Product/Product.php">取消</a>
+    <a href="../Homepages/product_customer.php">取消</a>
     <?php
             }
         }
@@ -54,8 +54,13 @@ if($EMAIL != null){
         }
     }
     else{
-        echo "請先建立訂單<br>";
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS.php>';
+        //echo "請先建立訂單<br>";
+?>
+        <script>
+            alert("請先建立新訂單");
+        </script>
+<?php
+        echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Create_ORDMAS1.php>';
     }
 }
 else{

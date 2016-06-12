@@ -1,0 +1,143 @@
+@import url(font-awesome.min.css);
+
+/* collapse btn icon in small screen */
+.icon-bar {
+	background: #fff;
+}
+/*
+.navbar-custom .navbar-brand .navbar-toggle:focus,
+.navbar-custom .navbar-brand .navbar-toggle:active,
+.nav-custom a:active {
+	outline: 0;
+}
+*/
+.nav-custom {
+	background-color: #000;
+	/* outline: 0; */
+}
+.nav-custom a {
+	color: #fff;
+	font-family: "Open Sans", sans-serif;
+	font-size: 12px;
+	font-weight: 100;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	text-decoration: none;
+}
+.nav-custom .nav li a {
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+	.nav-custom .nav li a:hover {
+		color: #d3bd98;
+		background-color: transparent;
+		/* outline: 0; */
+	}
+	.nav-custom .nav li a:focus {
+		background-color: transparent;
+		/* outline: 0; */
+	}
+.nav-custom .fa {
+	margin-left: 5px;
+}
+.container {
+	margin-top: 54px;
+	font-family: "Open Sans", sans-serif;
+}
+.manage {
+	margin-top: 20px;
+}
+#search {
+	width: 80%;
+	float: left;
+}
+#search_label {
+	width: 20%;
+}
+.click_label input {
+	display: none;
+}
+.click_label svg {
+	cursor: pointer;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus,
+#pills-xs a {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 200;
+    background-color: #000;
+}
+.nav-pills > li > a {
+	color: #777;
+}
+.nav-pills > li > a:hover {
+	background-color: transparent;
+	color: #000;
+}
+#pills-xs a,
+#pills-xs a:focus {
+	color: #fff;
+}
+	#pills-xs a:hover {
+		color: #fff;
+		background-color: #333;
+	}
+#pills-xs .dropdown-menu {
+	margin-left: 15px;
+	text-align: center;
+	line-height: 30px;
+}
+#pills-xs .dropdown-menu > li:hover {
+	cursor: pointer;
+	background-color: #ddd;
+}
+.btn-primary,
+.btn-primary:focus {
+	background-color: #ff880e;
+	border: #ff880e;
+}
+.btn-primary:hover,
+.btn-primary:active {
+	background-color: #ff880e;
+	opacity: 0.7;
+}
+.manage .btn-primary {
+	min-width: 56px;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+	vertical-align: middle;
+	text-align: center;
+}
+.table-responsive {
+	margin: 0;
+}
+.tab-content {
+	margin-top: 10px;
+}
+.table img {
+	max-height: 185px;
+	width: auto;
+}
+.table video {
+	height: 190px;
+	width: auto;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+	vertical-align: middle;
+	text-align: center;
+}
+#status {
+	outline: 0;
+}

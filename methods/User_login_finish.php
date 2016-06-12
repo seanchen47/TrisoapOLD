@@ -29,21 +29,21 @@ if($CUSPW != $row[0]){
 
 if($count == 0){
         $_SESSION['EMAIL'] = $EMAIL;
-        echo "登入成功";
+        //echo "登入成功";
         $sql = "SELECT CUSIDT FROM CUSMAS where EMAIL = '$EMAIL'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);
         $_SESSION['CUSIDT'] = $row[0];
         if($row[0] == 'A'){
-                echo '<meta http-equiv=REFRESH CONTENT=1;url=../HomePage/HomePage_Manager.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_manager.php>';
         }
         else{
-                echo '<meta http-equiv=REFRESH CONTENT=1;url=../HomePage/HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_customer.php>';
         }
 }
 else
 {
 	echo $message;
-        echo '<meta http-equiv=REFRESH CONTENT=1;url=User_login.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=1;url=User_login1.php>';
 }
 ?>

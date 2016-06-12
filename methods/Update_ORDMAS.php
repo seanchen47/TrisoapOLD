@@ -29,7 +29,7 @@ if($EMAIL != null){
 <a href="Update_ORDMAS_1.php">缺貨中訂單</a> <br>
 <a href="Update_ORDMAS_C.php">已完成訂單</a> <br>
 <a href="Update_ORDMAS_F.php">強制結束訂單</a> <br>
-<a href="../HomePage/HomePage_Manager.php">返回主頁</a> <br>
+<a href="../Homepages/index_manager.php">返回主頁</a> <br>
 <?php
         }
         else{

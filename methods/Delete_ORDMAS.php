@@ -18,8 +18,8 @@ if($EMAIL != null){
                 $ORDNO = $item['ORDNO'];
                 echo "<option value=\"$ORDNO\">$ORDNO</option>";
                 while($item = mysql_fetch_array($result)){
-                        $ORDNO = $item['ORDNO'];
-                        echo "<option value=\"$ORDNO\">$ORDNO</option>";       
+                $ORDNO = $item['ORDNO'];
+                echo "<option value=\"$ORDNO\">$ORDNO</option>";       
                 }
         }
         echo "</select> <br>";
