@@ -7,7 +7,6 @@
 	$CUSIDT = $_SESSION['CUSIDT'];
 	if($EMAIL != null){
 		if($CUSIDT == 'A'){
-			unset($_SESSION['ORDNO']);
 			$queryCUSNM = "SELECT CUSNM FROM CUSMAS where EMAIL = '$EMAIL'";
 			$result = mysql_query($queryCUSNM);
 			$row = mysql_fetch_row($result);
@@ -24,6 +23,7 @@
 <a href="../methods/Update_Manager.php">前往管理管理員</a> <br>
 <a href="../methods/Update_ITEMMAS.php">前往管理商品</a> <br>
 <a href="../methods/Update_ORDMAS.php">前往管理訂單</a> <br>
+<a herf="../methods/View_CUSMAS.php">前往查看顧客</a> <br>
 <a href="../Message/MSGMAS/Update_MSGMAS.php">前往管理留心語</a> <br><br>
 <a href="../methods/User_logout.php">登出</a> <br>
 <?php
