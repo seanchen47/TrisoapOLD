@@ -34,6 +34,6 @@ if($EMAIL != null){
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
 }
 ?>

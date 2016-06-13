@@ -39,12 +39,12 @@
 				<div class="collapse navbar-collapse navbar-main-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="../../HomePage/HomePage_Manager.php">
+							<a href="../../HomePages/index_manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="../Message.php">
 								回留心語首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>

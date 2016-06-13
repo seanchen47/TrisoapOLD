@@ -14,15 +14,15 @@ if($EMAIL != null){
                         echo "電子信箱:".$row['EMAIL']." 顧客姓名:".$row['CUSNM']." 顧客地址:".$row['CUSADD']." 顧客膚質:".$row['CUSTYPE']." 顧客生日:".$row['CUSBIRTHY']."/".$row['CUSBIRTHM']."/"$row['CUSBIRTHD']" 電話號碼:".$row['TEL']." 信用狀態:".$row['CREDITSTAT']." 狀態:".$row['ACTCODE']." 建立日期:".$row['CREATEDATE']." 最後修改日期:".$row['UPDATETEDATE']."<br>";
                 }
 ?>
-<a href="../HomePage/HomePage_Manager.php">返回</a> <br>
+<a href="../HomePages/index_manager.php">返回</a> <br>
 <?php
         }
         else{
                 echo '您無權限觀看此頁面!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage_Customer.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index_customer.php>';
         }
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
 }

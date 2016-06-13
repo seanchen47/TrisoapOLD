@@ -20,7 +20,7 @@
       include("../methods/mysql_connect.php");
       $EMAIL = $_SESSION['EMAIL'];
       $CUSIDT = $_SESSION['CUSIDT'];
-      if($EMAIL == null){
+      if($EMAIL == null):
     ?>
     <!-- Preloader-->
     <div id="preloader">
@@ -245,13 +245,13 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <?php
-      } 
-      else{
-        if($CUSIDT == 'A')
+      else:
+        if($CUSIDT == 'A'):
           echo '<meta http-equiv=REFRESH CONTENT=2;url=index_Manager.php>';
-        else($CUSIDT == 'B')
+        elseif($CUSIDT == 'B'):
           echo '<meta http-equiv=REFRESH CONTENT=2;url=index_Customer.php>';
-      }
+        endif;
+      endif;
     ?>
   </body>
 </html>

@@ -22,6 +22,6 @@ if($EMAIL != null){
 }
 else{
 	echo '請先登入或註冊!';
-    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
 }
 ?>

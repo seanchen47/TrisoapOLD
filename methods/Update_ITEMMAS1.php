@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../Homepages/index.html">
+                            <a href="../Homepages/index.php">
                                 登出<i class="fa fa-angle-down" aria-hidden="true"></i>
                             </a>
                         </li>
@@ -73,11 +73,11 @@
         <?php
                 else:
                     print "您無權限觀看此頁面!";
-                    echo '<meta http-equiv=REFRESH CONTENT=2;url=../Homepages/index.html>';
+                    echo '<meta http-equiv=REFRESH CONTENT=2;url=../Homepages/index_customer.php>';
                 endif;
             else:
                 print "您無權限觀看此頁面!";
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=../../Homepages/index.html>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=../../Homepages/index.php>';
             endif;
         ?>
     </body>

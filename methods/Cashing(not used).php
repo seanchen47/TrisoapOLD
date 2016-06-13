@@ -16,18 +16,18 @@ unset($_SESSION['ORDNO']);
 if($EMAIL != null){
 	if($CUSIDT == 'A'){
 ?>
-<a href="../HomePage/HomePage_Manager.php">返回首頁</a>
+<a href="../HomePages/index_manager.php">返回首頁</a>
 <?php
 	}
 	else{
 ?>
-<a href="../HomePage/HomePage_Customer.php">返回首頁</a>
+<a href="../HomePages/index_customer.php">返回首頁</a>
 <?php
 	}
 }
 else{
 ?>
-<a href="../HomePage/HomePage.php">返回首頁</a>
+<a href="../HomePages/index.php">返回首頁</a>
 <?php
 }
 ?>

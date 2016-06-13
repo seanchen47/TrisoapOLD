@@ -27,7 +27,7 @@ try {
     $obj->Send['TotalAmount']       = $totalamount;                               //Order_amount
     $obj->Send['TradeDesc']         = "trisoap";                                  //Order_Description
     $obj->Send['ChoosePayment']     = PaymentMethod::ALL;                         //Payment Method
-    $obj->Send['ClientBackURL']     = "http://140.112.222.143/Homepages/index.html";    //get back to HomePage
+    $obj->Send['ClientBackURL']     = "http://140.112.222.143/Homepages/index.php";    //get back to HomePage
     $sql = "UPDATE ORDMAS SET MerchantTradeNo = '$TradeNo' WHERE ORDNO = '$ORDNO'";
     mysql_query($sql);
 

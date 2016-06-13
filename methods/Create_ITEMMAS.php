@@ -9,5 +9,5 @@
 商品照片*：<input type="file" name="PHOTO" /> <br>
 商品描述：<input type="text" name="DESCRIPTION" /> <br>
 <input type="submit" name="button" value="新增" />
-<a href="../HomePage/HomePage_Manager.php">取消</a>
+<a href="../HomePages/index_manager.php">取消</a>
 </form>

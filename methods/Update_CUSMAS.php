@@ -27,17 +27,17 @@ if($EMAIL != null){
         echo "</form>";
         if($CUSIDT == 'A'){
 ?>
-<a href="../HomePage/HomePage_Manager.php">取消</a>
+<a href="../HomePages/index_manager.php">取消</a>
 <?php
         }
     else{
 ?>
-<a href="../HomePage/HomePage_Customer.php">取消</a>
+<a href="../HomePages/index_customer.php">取消</a>
 <?php
         }
 }
 else{
         echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/HomePage.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
 }
 ?>

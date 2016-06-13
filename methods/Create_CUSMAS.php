@@ -28,4 +28,4 @@
 特殊要求：<textarea name="SPEINS" cols="45" rows="5"></textarea> <br>
 <input type="submit" name="button" value="註冊" />
 </form>
-<a href="../testing/index.html">取消</a>
+<a href="../index.php">取消</a>

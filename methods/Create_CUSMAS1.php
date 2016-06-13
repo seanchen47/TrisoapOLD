@@ -72,7 +72,7 @@
 				<a href="#"><p class="small">Forgot your password?</p></a>
 			-->
 			</form>
-			<button type="button"></buttom><a href="../Homepages/index.html">取消</a>
+			<button type="button"></buttom><a href="../Homepages/index.php">取消</a>
 		</div>
 	</div>
 </body>
