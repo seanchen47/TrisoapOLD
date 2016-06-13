@@ -260,11 +260,11 @@
 		<?php
 				else:
 					print "您無權限觀看此頁面!";
-		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/index_Customer.php>';
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePages/index_Customer.php>';
 				endif;
 			else:
 		        print "您無權限觀看此頁面!";
-		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/index.php>';
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePages/index.php>';
 			endif;
 		?>
 	</body>

@@ -20,17 +20,29 @@ if($EMAIL != null){
                 if($message == null){
                         $sql = "UPDATE CUSMAS SET CUSIDT='A' WHERE EMAIL='$newEMAIL'";
                         if(mysql_query($sql)){
-                                echo '新增成功';
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_Manager.php>';
+                                ?>
+                                <script>
+                                    alert("新增成功");
+                                </script>
+                                <?php
+                                echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Update_Manager.php>';
                         }
                         else{
-                                echo '新增失敗';
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_Manager.php>';
+                                ?>
+                                <script>
+                                    alert("新增失敗");
+                                </script>
+                                <?php
+                                echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Create_Manager.php>';
                         }
                 }
                 else{
-                        echo $message;
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_Manager.php>';
+                        ?>
+                        <script>
+                            alert("密碼錯誤");
+                        </script>
+                        <?php
+                        echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Create_Manager.php>';
                 }
         }
         else{

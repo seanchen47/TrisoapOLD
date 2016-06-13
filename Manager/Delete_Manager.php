@@ -31,7 +31,7 @@
 				<label for="password">再次輸入您的密碼*<input type="password" name="CUSPW" />  </label><br>			
 				<label for="username"></label>
 
-				<button type="submit">刪除管理員</button>
+				<button type="submit">刪除</button>
 			</form>
 			<button type="button"></buttom><a href="Update_Manager.php">取消</a>
 		</div>
