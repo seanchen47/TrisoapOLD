@@ -50,7 +50,7 @@
 							<a href="../methods/Edit_ORDMAS.php">更新訂單</a>
 						</li>
 						<li>
-							<a href="../HomePage/index_Manager.php">
+							<a href="../HomePages/index_Manager.php">
 								回三三首頁<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 						</li>
@@ -238,11 +238,11 @@
 		<?php
 				else:
 					print "您無權限觀看此頁面!";
-		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/index_Customer.php>';
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index_Customer.php>';
 				endif;
 			else:
 		        print "您無權限觀看此頁面!";
-		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePage/index.php>';
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
 			endif;
 		?>
 	</body>
