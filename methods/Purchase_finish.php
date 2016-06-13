@@ -5,7 +5,11 @@ include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
 $ITEMNO = $_SESSION['ITEMNO'];
 $ORDNO = $_SESSION['ORDNO'];
+$CUSIDT = $_SESSION['CUSIDT'];
 $ITEMAMT = htmlentities($_POST['ITEMAMT']);
+if($ITEMAMT < 0){
+	$ITEMAMT = 0;
+}
 
 if($EMAIL != null){
 	if($ITEMNO != null){
@@ -33,8 +37,10 @@ if($EMAIL != null){
 		}
 	}
 	else{
-		//echo "將把您導向商品頁<br>";
-		echo '<meta http-equiv=REFRESH CONTENT=0.5;url=../Homepages/product_customer.php>';
+		if($CUSIDT == 'A')
+			echo '<meta http-equiv=REFRESH CONTENT=0.5;url=../Homepages/product_manager.php>';
+		elseif($CUSIDT == 'B')
+			echo '<meta http-equiv=REFRESH CONTENT=0.5;url=../Homepages/product_customer.php>';
 	}
 }
 else{

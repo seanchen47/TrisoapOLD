@@ -54,7 +54,6 @@ if($EMAIL != null){
         }
     }
     else{
-        //echo "請先建立訂單<br>";
 ?>
         <script>
             alert("請先建立新訂單");
