@@ -274,12 +274,12 @@
       }
       else{
         print "您無權限觀看此頁面!";
-            echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage_Customer.php>';
+            echo '<meta http-equiv=REFRESH CONTENT=2;url=index_Customer.php>';
       }
     }
     else{
           print "您無權限觀看此頁面!";
-          echo '<meta http-equiv=REFRESH CONTENT=2;url=HomePage.php>';
+          echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
     }
     ?>
   </body>
