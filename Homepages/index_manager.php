@@ -69,7 +69,7 @@
             
             <li class="dropdown"><a href="#" class="dropdown-toggle"><span class="lang">管理平台</span><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="../methods/Update_Manager.php">權限管理</a></li>
+                <li><a href="../Manager/Update_Manager.php">權限管理</a></li>
                 <li><a href="../methods/Update_ITEMMAS1.php">商品管理</a></li>
                 <li><a href="../methods/Update_ORDMAS.php">訂單管理</a></li>
                 <li><a href="../Message/MSGMAS/Update_MSGMAS.php">留心語管理</a></li>

@@ -18,7 +18,7 @@ if($EMAIL != null){
                 $message = $message . '無法取消已付款之訂單<br>';
         }
         if($message == null){
-                $sql = "update ORDMAS set ACTCODE='0', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
+                $sql = "UPDATE ORDMAS SET ACTCODE='0', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if(!mysql_query($sql)){
                         $message = $message . '刪除失敗<br>';
                 }

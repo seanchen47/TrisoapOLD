@@ -1,0 +1,89 @@
+@import url(font-awesome.min.css);
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	color: #777;
+}
+
+/* Navbar */
+.nav-custom {
+	background-color: transparent;
+	margin-top: 30px;
+	/* outline: 0; */
+}
+
+.nav-custom a {
+	color: #fff;
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+	font-weight: 100;
+	letter-spacing: 4px;
+	text-decoration: none;
+}
+
+.nav-custom .nav li a {
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+	.nav-custom .nav li a:hover {
+		color: #d3bd98;
+		background-color: transparent;
+		/* outline: 0; */
+	}
+	.nav-custom .nav li a:focus {
+		background-color: transparent;
+		/* outline: 0; */
+	}
+
+.navbar-brand {
+	padding: 0 0 0 15px;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+}
+
+/* collapse btn icon in small screen */
+.icon-bar {
+	background: #fff;
+}
+
+/* fullpage background */
+#fullpage {
+	background: url(../image/background/shootingstar.jpeg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size: cover;
+}
+
+/* Contents */
+.intro,
+.selected-photo {
+	margin-top: 170px;
+}
+
+.intro h1 {
+	color: #56EAD8;
+}
+
+.intro h3 {
+	color: #fff;
+}
+.intro p {
+	color: #fff;
+	font-size: 16px;
+}
+/* footer */
+.footer {
+	position: relative;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}

@@ -1,15 +1,15 @@
 <?php session_start(); ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-include("mysql_connect.php");
+include("../methods/mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
 $CUSIDT = $_SESSION['CUSIDT'];
-$newEMAIL = $_SESSION['newEMAIL'];
 $message = null;
 
 if($EMAIL != null){
         if($CUSIDT == 'A'){
-                $PW = $_POST['PW'];
+                $newEMAIL = $_POST['newEMAIL'];
+                $PW = $_POST['CUSPW'];
                 $queryPW = "SELECT CUSPW FROM CUSMAS where EMAIL = '$EMAIL'";
                 $result = mysql_query($queryPW);
                 $row = mysql_fetch_row($result);
@@ -18,21 +18,19 @@ if($EMAIL != null){
                 }
 
                 if($message == null){
-                        $sql = "UPDATE CUSMAS SET CUSIDT='B' WHERE EMAIL='$newEMAIL'";
-                        unset($_SESSION['newEMAIL']);
+                        $sql = "UPDATE CUSMAS SET CUSIDT='A' WHERE EMAIL='$newEMAIL'";
                         if(mysql_query($sql)){
-                                echo '刪除成功';
+                                echo '新增成功';
                                 echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_Manager.php>';
                         }
                         else{
-                                echo '刪除失敗';
-                                echo '<meta http-equiv=REFRESH CONTENT=2;url=Delete_Manager.php>';
+                                echo '新增失敗';
+                                echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_Manager.php>';
                         }
                 }
                 else{
                         echo $message;
-                        unset($_SESSION['newEMAIL']);
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=Delete_Manager.php>';
+                        echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_Manager.php>';
                 }
         }
         else{

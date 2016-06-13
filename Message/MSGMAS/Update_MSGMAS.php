@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="image/icon/favicon.png">
-		<title>留心語上傳管理</title>
+		<title>留心語管理</title>
 		<meta name="author" content="2016 NTUIM SA GROUP7">
 		<meta name="description" content="">
 		<!-- bootstrap css -->
@@ -260,11 +260,11 @@
 		<?php
 				else:
 					print "您無權限觀看此頁面!";
-		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/HomePage_Customer.php>';
+		        	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/index_Customer.php>';
 				endif;
 			else:
 		        print "您無權限觀看此頁面!";
-		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/HomePage.php>';
+		        echo '<meta http-equiv=REFRESH CONTENT=2;url=../../HomePage/index.php>';
 			endif;
 		?>
 	</body>
