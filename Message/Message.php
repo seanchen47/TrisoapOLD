@@ -49,7 +49,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="../HomePage/HomePage.php">
+								<a href="../HomePages/index.php">
 									回到三三
 									<i class="fa fa-paper-plane" aria-hidden="true"></i>
 								</a>
