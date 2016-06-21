@@ -32,10 +32,10 @@ if($EMAIL != null){
                         $result = mysql_query($sql);
                         $row = mysql_fetch_row($result);
                         if($row != false)
-                                $sql = "UPDATE ORDITEMMAS SET ITEMAMT='$ITEMAMT', UPDATEDATE='$UPDATEDATE' WHERE ITEMNO='$ITEMNO'";
+                                $sql = "UPDATE ORDITEMMAS SET ORDAMT='$ITEMAMT', UPDATEDATE='$UPDATEDATE' WHERE ITEMNO='$ITEMNO'";
                         else{
                                 if($ITEMAMT != '0')
-                                        $sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
+                                        $sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ORDAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
                                 else
                                         $sql = null;
                         }

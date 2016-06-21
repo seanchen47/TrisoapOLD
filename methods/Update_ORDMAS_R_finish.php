@@ -19,7 +19,7 @@ if($EMAIL != null){
                         $Detail = mysql_query($queryDetail);
                         while($item = mysql_fetch_array($Detail)){
                                 $ITEMNO = $item['ITEMNO'];
-                                $ITEMAMT = $item['ITEMAMT'];
+                                $ITEMAMT = $item['ORDAMT'];
                                 $queryAMT = "SELECT * FROM ITEMMAS WHERE ITEMNO='$ITEMNO'";
                                 $result = mysql_query($queryAMT);
                                 $AMT = mysql_fetch_row($result);

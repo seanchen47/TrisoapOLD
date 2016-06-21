@@ -20,7 +20,7 @@ if($EMAIL != null){
     }
     if($message == null){
         $savetype = 0;
-        $sql = "SELECT * FROM OWNMAS where COMPANYNM='Trisoap'";
+        $sql = "SELECT * FROM OWNMAS where COMNM='Trisoap'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);
         if($MSGPHOTO == null && $MSGVIDEO == null)
@@ -30,19 +30,19 @@ if($EMAIL != null){
         elseif($MSGPHOTO == null && $MSGVIDEO != null)
             $savetype = 3;
         if($savetype = 0){
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$MSGVIDEO', '$CREATEDATE')";
+            $enter = "insert into MSGMAS (MSGNO, EMAIL, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$MSGVIDEO', '$CREATEDATE')";
         }
         elseif($savetype = 1){
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$CREATEDATE')";
+            $enter = "insert into MSGMAS (MSGNO, EMAIL, MSGTXT, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$CREATEDATE')";
         }
         elseif($savetype = 2){
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$CREATEDATE')";
+            $enter = "insert into MSGMAS (MSGNO, EMAIL, MSGTXT, MSGPHOTO, MSGPHOTOTYPE, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGPHOTO', '$MSGPHOTOTYPE', '$CREATEDATE')";
         }
         else{    
-            $enter = "insert into MSGMAS (MSGNO, CUSNO, MSGTXT, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGVIDEO', '$CREATEDATE')";
+            $enter = "insert into MSGMAS (MSGNO, EMAIL, MSGTXT, MSGVIDEO, CREATEDATE) values ('$row[7]', '$EMAIL', '$MSGTXT', '$MSGVIDEO', '$CREATEDATE')";
         }
         if(mysql_query($enter)){
-            $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMPANYNM='Trisoap'";
+            $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMNM='Trisoap'";
             mysql_query($sql);
             echo "新增留心語成功";
             mb_internal_encoding("utf-8");

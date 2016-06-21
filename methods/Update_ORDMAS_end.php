@@ -20,7 +20,7 @@ if($EMAIL != null){
                         $Detail = mysql_query($queryDetail);
                         while($item = mysql_fetch_array($Detail)){
                                 $ITEMNO = $item['ITEMNO'];
-                                $ITEMAMT = $item['ITEMAMT'];
+                                $ITEMAMT = $item['ORDAMT'];
                                 $amt = "UPDATE ITEMMAS SET ITEMAMT=ITEMAMT-'$ITEMAMT' WHERE ITEMNO='$ITEMNO'";
                                 mysql_query($amt);
                         }

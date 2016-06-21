@@ -197,7 +197,7 @@
 											<!-- 顧客帳號 -->
 											<td>
 												<?php
-													echo $row['CUSNO'];
+													echo $row['EMAIL'];
 												?>
 											</td>
 											<!-- 審核狀態 default: 等待 -->

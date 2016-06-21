@@ -90,11 +90,11 @@
                     if($row[0] == '1'){
                         $sql = "SELECT * FROM CUSMAS where EMAIL='$EMAIL'";
                         $result = mysql_query($sql);
-                        $row = mysql_fetch_row($result);
-                        if($row[2] == null){
+                        $row = mysql_fetch_array($result);
+                        if($row['CUSADD'] == null){
                             $message = $message . '請先更新您的地址<br>';
                         }
-                        if($row[9] == null){
+                        if($row['TEL'] == null){
                             $message = $message . '請先更新您的電話<br>';
                         }
 

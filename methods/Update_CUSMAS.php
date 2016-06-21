@@ -13,16 +13,16 @@ if($EMAIL != null){
     
         echo "<form name=\"form\" method=\"post\" action=\"Update_CUSMAS_finish.php\">";
         echo "電子信箱：$EMAIL <br>";
-        echo "姓名：<input type=\"text\" name=\"CUSNM\" value=\"$row[1]\" /> <br>";
-        echo "地址：<input type=\"text\" name=\"CUSADD\" value=\"$row[2]\" /> <br>";
-        echo "膚質：<select name=\"CUSTYPE\" value=\"$row[3]\" /> ";
+        echo "姓名：<input type=\"text\" name=\"CUSNM\" value=\"$row[2]\" /> <br>";
+        echo "地址：<input type=\"text\" name=\"CUSADD\" value=\"$row[4]\" /> <br>";
+        echo "膚質：<select name=\"CUSTYPE\" value=\"$row[11]\" /> ";
         echo "<option value=\"A\">乾性</option>";
         echo "<option value=\"B\">中性</option>";
         echo "<option value=\"C\">油性</option>";
         echo "<option value=\"D\">混和性</option> </select> <br>";
-        echo "電話：<input type=\"text\" name=\"TEL\" value=\"$row[9]\" /> <br>";
-        echo "特殊要求：<textarea name=\"SPEINS\" cols=\"45\" rows=\"5\">$row[11]</textarea> <br>";
-        echo "統一編號：<input type=\"text\" name=\"TAXID\" value=\"$row[12]\" /> <br>";
+        echo "電話：<input type=\"text\" name=\"TEL\" value=\"$row[10]\" /> <br>";
+        echo "特殊要求：<textarea name=\"SPEINS\" cols=\"45\" rows=\"5\">$row[21]</textarea> <br>";
+        echo "統一編號：<input type=\"text\" name=\"TAXID\" value=\"$row[14]\" /> <br>";
         echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
         echo "</form>";
         if($CUSIDT == 'A'){

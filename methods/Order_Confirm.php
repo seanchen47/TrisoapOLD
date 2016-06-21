@@ -103,7 +103,7 @@
                     array_push($Price, $price);        
                 }
 
-                $sql = "SELECT ITEMAMT FROM ORDITEMMAS where ORDNO = '$ORDNO'";  //get item amount
+                $sql = "SELECT ORDAMT FROM ORDITEMMAS where ORDNO = '$ORDNO'";  //get item amount
                 $amt_result = mysql_query($sql);
                 $number = mysql_num_rows($amt_result);
                 while($amt_row = mysql_fetch_row($amt_result, MYSQL_NUM)){

@@ -46,26 +46,26 @@
 			?>
 			<label for="username">姓名
 	        <?php
-	        echo "<input type=\"text\" name=\"CUSNM\" value=\"$row[1]\" />";
+	        echo "<input type=\"text\" name=\"CUSNM\" value=\"$row[2]\" />";
 	        ?>
 	        地址
 	        <?php
-	        echo "<input type=\"text\" name=\"CUSADD\" value=\"$row[2]\" /> <br>";
+	        echo "<input type=\"text\" name=\"CUSADD\" value=\"$row[4]\" /> <br>";
 	        ?>
 	    	</label><br>
 	    	<label for="username">電話
 	        <?php
-	        echo "<input type=\"text\" name=\"TEL\" value=\"$row[9]\" />";
+	        echo "<input type=\"text\" name=\"TEL\" value=\"$row[10]\" />";
 	        ?>
 	        統編
 	        <?php
-	        echo "<input type=\"text\" name=\"TAXID\" value=\"$row[12]\" />";
+	        echo "<input type=\"text\" name=\"TAXID\" value=\"$row[14]\" />";
 	        ?>
 	    	</label><br>
 	        <label for="username">
 					<div class="styled-select">您的膚質*<select name="CUSTYPE"
 						<?php
-							echo "$row[3]";
+							echo "$row[11]";
 						?>
 						></option>
 					  	<option value="A">乾性</option>
@@ -76,7 +76,7 @@
 				</label>
 	        <label for="username">特殊要求
 	        	<?php
-	        	echo "<textarea name=\"SPEINS\" cols=\"45\" rows=\"5\">$row[11]</textarea>";
+	        	echo "<textarea name=\"SPEINS\" cols=\"45\" rows=\"5\">$row[21]</textarea>";
 	        	?>
 	        </label><br>
 	        

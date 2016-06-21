@@ -90,7 +90,7 @@
                   date_default_timezone_set('Asia/Taipei');
       						$CREATEDATE = date("Y-m-d H:i:s");
       			      $UPDATEDATE = date("Y-m-d H:i:s");
-      						$sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
+      						$sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ORDAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
       						unset($_SESSION['ITEMNO']);
       						if(mysql_query($sql)){
       							echo "<h1>成功加入購物車</h1>";

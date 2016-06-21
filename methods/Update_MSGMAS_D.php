@@ -14,7 +14,7 @@ if($EMAIL != null){
                 $queryMSGMAS = "SELECT * FROM MSGMAS WHERE MSGSTAT='D' AND ACTCODE='1'";
                 $result = mysql_query($queryMSGMAS);
                 while($row = mysql_fetch_array($result)){
-  					echo "留言編號:".$row['MSGNO']." 顧客編號:".$row['CUSNO']." 留言文字:".$row['MSGTXT']." 留言照片/影片:";
+  					echo "留言編號:".$row['MSGNO']." 顧客編號:".$row['EMAIL']." 留言文字:".$row['MSGTXT']." 留言照片/影片:";
                     // 顯示影片或照片
                     echo " 建立日期:".$row['CREATEDATE']." 發佈日期:".$row['PUBLICDATE']." ";
                     $MSGNO = $row['MSGNO'];

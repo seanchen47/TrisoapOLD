@@ -13,7 +13,7 @@ while($row = mysql_fetch_array($result)){
 	$queryMONEY = "SELECT PRICE FROM ITEMMAS where ITEMNO='$ITEMNO'";
 	$end = mysql_query($queryMONEY);
 	$ITEMPRICE = mysql_fetch_row($end);
-	$price += ($row['ITEMAMT'] * $ITEMPRICE[0]);
+	$price += ($row['ORDAMT'] * $ITEMPRICE[0]);
 }
 $TOTALPRICE = $price;
 $sql = "UPDATE ORDMAS SET TOTALPRICE='$TOTALPRICE' WHERE ORDNO='$ORDNO'";

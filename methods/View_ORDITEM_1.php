@@ -17,14 +17,14 @@ if($EMAIL != null){
                     echo "訂單編號：".$ORDNO."<br>";
                     echo "訂單種類：".$row['ORDTYPE']."<br>";
                     echo "顧客編號：".$row['CUSNO']."<br>";
-                    echo "額外指令：".$row['ORD_INST']."<br>";
+                    echo "額外指令：".$row['ORDINST']."<br>";
                     echo "訂購商品：<br>";
                     
                     $queryDetail = "SELECT * FROM ORDITEMMAS WHERE ORDNO='$ORDNO'";
                     $Detail = mysql_query($queryDetail);
                     while($item = mysql_fetch_array($Detail)){
                         $ITEMNO = $item['ITEMNO'];
-                        $ITEMAMT = $item['ITEMAMT'];
+                        $ITEMAMT = $item['ORDAMT'];
                         $queryITEMNM = "SELECT * FROM ITEMMAS where ITEMNO='$ITEMNO'";
                         $queryName = mysql_query($queryITEMNM);
                         $name = mysql_fetch_row($queryName);

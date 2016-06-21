@@ -5,7 +5,7 @@
 include("mysql_connect.php");
 $EMAIL = $_SESSION['EMAIL'];
 if($EMAIL != null){
-        $queryORDNO = "SELECT * FROM ORDMAS where CUSNO='$EMAIL' AND ORDSTAT='E' AND PAYSTAT='0' AND ACTCODE='1'";
+        $queryORDNO = "SELECT * FROM ORDMAS where EMAIL='$EMAIL' AND ORDSTAT='E' AND PAYSTAT='0' AND ACTCODE='1'";
         $result = mysql_query($queryORDNO);
         $item = mysql_fetch_array($result);
         if($item == false){

@@ -6,9 +6,9 @@ $EMAIL = $_SESSION['EMAIL'];
 //$ITEMNO = $_SESSION['ITEMNO'];
 //$ORDNO = $_SESSION['ORDNO'];
 $ORDTYPE = htmlentities($_POST['ORDTYPE']);  //sth wrong
-$ORD_INST = htmlentities($_POST['ORD_INST']);  //sth wrong
+$ORDINST = htmlentities($_POST['ORDINST']);  //sth wrong
 if($EMAIL != null){
-	$sql = "SELECT * FROM OWNMAS where COMPANYNM='Trisoap'";
+	$sql = "SELECT * FROM OWNMAS where COMNM='Trisoap'";
     $result = mysql_query($sql);
     $row = mysql_fetch_row($result);
     date_default_timezone_set('Asia/Taipei');
@@ -16,9 +16,9 @@ if($EMAIL != null){
     $UPDATEDATE = date("Y-m-d H:i:s");
     if($ORDTYPE == 'G'){
         $SHIPFEE = 20;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
-    		$sql = "UPDATE OWNMAS SET NORDNOG=NORDNOG+1 where COMPANYNM='Trisoap'";
+    		$sql = "UPDATE OWNMAS SET NORDNOG=NORDNOG+1 where COMNM='Trisoap'";
     		mysql_query($sql);
     		$_SESSION['ORDNO'] = $row[5];
     		//echo "建立訂單成功";
@@ -36,9 +36,9 @@ if($EMAIL != null){
     }
     else{
         $SHIPFEE = 50;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORD_INST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORD_INST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
-    		$sql = "UPDATE OWNMAS SET NORDNOS=NORDNOS+1 where COMPANYNM='Trisoap'";
+    		$sql = "UPDATE OWNMAS SET NORDNOS=NORDNOS+1 where COMNM='Trisoap'";
     		mysql_query($sql);
     		$_SESSION['ORDNO'] = $row[6];
     		//echo "建立訂單成功";

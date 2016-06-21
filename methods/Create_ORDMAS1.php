@@ -49,7 +49,7 @@
 
 	        <label for="username">額外指令<br>
 	        	<?php
-	        	echo "<textarea name=\"ORD_INST\" cols=\"45\" rows=\"5\"></textarea>";
+	        	echo "<textarea name=\"ORDINST\" cols=\"45\" rows=\"5\"></textarea>";
 	        	?>
 	        </label><br>
 	        

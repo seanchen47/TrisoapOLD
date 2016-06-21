@@ -212,7 +212,7 @@
 											<!-- 備註 -->
 											<td>
 												<?php
-													echo $row['ORD_INST'];
+													echo $row['ORDINST'];
 												?>
 											</td>
 											<!-- 總計金額 -->

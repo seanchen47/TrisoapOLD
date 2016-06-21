@@ -11,7 +11,7 @@ if($EMAIL != null){
     echo "<option value=\"G\">正常</option>";
 	echo "<option value=\"S\">特別處理</option> </select>";
 	echo "  選擇特別處理將需要額外的費用<br>";
-    echo "額外指令：<textarea name=\"ORD_INST\" cols=\"45\" rows=\"5\"></textarea> <br>";
+    echo "額外指令：<textarea name=\"ORDINST\" cols=\"45\" rows=\"5\"></textarea> <br>";
     echo "<input type=\"submit\" name=\"button\" value=\"確定\" />";
     echo "</form>";
 ?>

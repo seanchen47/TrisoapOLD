@@ -20,7 +20,7 @@ if($EMAIL != null){
                     echo "<input type=\"submit\" name=\"button\" value=\"$ORDNO\" />";
                     echo "</form>";
                     
-                    echo "訂單種類:".$row['ORDTYPE']." 顧客編號:".$row['CUSNO']." 訂單狀態:".$row['ORDSTAT']." 額外指令:".$row['ORD_INST']." 訂單總額:".$row['TOTALPRICE']." 訂單總值:".$row['TOTALAMT']." 建立日期:".$row['CREATEDATE']."</br>";
+                    echo "訂單種類:".$row['ORDTYPE']." 顧客編號:".$row['EMAIL']." 訂單狀態:".$row['ORDSTAT']." 額外指令:".$row['ORDINST']." 訂單總額:".$row['TOTALPRICE']." 訂單總值:".$row['TOTALAMT']." 建立日期:".$row['CREATEDATE']."</br>";
                 }
   				echo "<br>";
 ?>
