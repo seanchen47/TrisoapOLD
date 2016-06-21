@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost
--- 產生時間： 2016 年 06 月 15 日 19:12
+-- 產生時間： 2016 年 06 月 21 日 21:08
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.21
 
@@ -23,41 +23,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `CUSMAS`
+-- 資料表結構 `cusmas`
 --
 
-CREATE TABLE `CUSMAS` (
-  `CUSIDT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'B',
-  `CUSNM` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `CUSADD` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `CUSTYPE` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `CUSBIRTHY` int(4) NOT NULL,
-  `CUSBIRTHM` int(2) NOT NULL,
-  `CUSBIRTHD` int(2) NOT NULL,
-  `COUNTY` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `ZCODE` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `TEL` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `EMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `SPEINS` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `TAXID` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `KNOWTYPE` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `SALEAMTPTD` int(15) DEFAULT '0',
-  `SALEAMTYTD` int(15) DEFAULT '0',
-  `CURAR` int(15) DEFAULT '0',
-  `CREDITSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT 'A',
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1',
+CREATE TABLE `cusmas` (
+  `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,
+  `CUSPW` varchar(15) COLLATE utf8_bin NOT NULL,
+  `CUSNM` varchar(30) COLLATE utf8_bin NOT NULL,
+  `CUSIDT` varchar(1) COLLATE utf8_bin NOT NULL,
+  `CUSADD` varchar(100) COLLATE utf8_bin NOT NULL,
+  `CUSBIRTHY` tinyint(4) NOT NULL,
+  `CUSBIRTHM` tinyint(2) NOT NULL,
+  `CUSBIRTHD` tinyint(2) NOT NULL,
+  `COUNTRY` varchar(15) COLLATE utf8_bin NOT NULL,
+  `ZCODE` varchar(5) COLLATE utf8_bin NOT NULL,
+  `TEL` varchar(15) COLLATE utf8_bin NOT NULL,
+  `CUSTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
+  `KNOWTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
+  `CREDITSTAT` varchar(1) COLLATE utf8_bin NOT NULL,
+  `TAXID` varchar(15) COLLATE utf8_bin NOT NULL,
+  `DISCOUNT` int(8) NOT NULL,
+  `SALEAMTMTD` int(8) NOT NULL,
+  `SALEAMTSTD` int(8) NOT NULL,
+  `SALEAMTYTD` int(8) NOT NULL,
+  `SALEAMT` int(8) NOT NULL,
+  `CURAR` int(8) NOT NULL,
+  `SPEINS` varchar(100) COLLATE utf8_bin NOT NULL,
   `CREATEDATE` datetime NOT NULL,
   `UPDATEDATE` datetime NOT NULL,
-  `CUSPW` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- 資料表的匯出資料 `CUSMAS`
+-- 資料表的匯出資料 `cusmas`
 --
 
-INSERT INTO `CUSMAS` (`CUSIDT`, `CUSNM`, `CUSADD`, `CUSTYPE`, `CUSBIRTHY`, `CUSBIRTHM`, `CUSBIRTHD`, `COUNTY`, `ZCODE`, `TEL`, `EMAIL`, `SPEINS`, `TAXID`, `KNOWTYPE`, `SALEAMTPTD`, `SALEAMTYTD`, `CURAR`, `CREDITSTAT`, `ACTCODE`, `CREATEDATE`, `UPDATEDATE`, `CUSPW`) VALUES
-('A', 'Tim', 'No', 'A', 1995, 12, 6, NULL, NULL, '0987654321', 'A02705028', 'Hi', '123', 'B', 0, 0, 0, 'A', 1, '2016-05-20 00:00:00', '2016-05-20 00:00:00', '123'),
-('B', 'Tim', 'Home', 'A', 1995, 12, 6, NULL, NULL, '0922825881', 'B02705028', 'Nothing', '123', 'A', 0, 0, 0, 'A', 1, '2016-05-20 00:00:00', '2016-06-13 18:20:15', '123');
+INSERT INTO `cusmas` (`EMAIL`, `CUSPW`, `CUSNM`, `CUSIDT`, `CUSADD`, `CUSBIRTHY`, `CUSBIRTHM`, `CUSBIRTHD`, `COUNTRY`, `ZCODE`, `TEL`, `CUSTYPE`, `KNOWTYPE`, `CREDITSTAT`, `TAXID`, `DISCOUNT`, `SALEAMTMTD`, `SALEAMTSTD`, `SALEAMTYTD`, `SALEAMT`, `CURAR`, `SPEINS`, `CREATEDATE`, `UPDATEDATE`, `ACTCODE`) VALUES
+('A02705028', '123', 'Tim', 'A', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
+('B02705028', '123', 'Tim', 'B', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -68,25 +71,25 @@ INSERT INTO `CUSMAS` (`CUSIDT`, `CUSNM`, `CUSADD`, `CUSTYPE`, `CUSBIRTHY`, `CUSB
 CREATE TABLE `ITEMMAS` (
   `ITEMNO` int(15) NOT NULL,
   `ITEMNM` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `ITEMAMT` int(15) NOT NULL DEFAULT '0',
-  `PRICE` int(15) DEFAULT NULL,
+  `ITEMAMT` int(8) NOT NULL DEFAULT '0',
+  `PRICE` int(8) DEFAULT NULL,
   `DESCRIPTION` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `PHOTO` mediumblob NOT NULL,
   `PHOTOTYPE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '0',
   `CREATEDATE` datetime NOT NULL,
-  `UPDATEDATE` datetime NOT NULL
+  `UPDATEDATE` datetime NOT NULL,
+  `ACTCODE` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- 資料表的匯出資料 `ITEMMAS`
 --
 
-INSERT INTO `ITEMMAS` (`ITEMNO`, `ITEMNM`, `ITEMAMT`, `PRICE`, `DESCRIPTION`, `PHOTO`, `PHOTOTYPE`, `ACTCODE`, `CREATEDATE`, `UPDATEDATE`) VALUES
-(1, '田靜山巒禾風皂', 0, 300, '', '', '', 1, '2016-05-20 00:00:00', '2016-05-20 00:00:00'),
-(2, '釋迦手感果力皂', 0, 300, '', '', '', 1, '2016-05-20 00:00:00', '2016-05-20 00:00:00'),
-(3, '金絲森林渲染皂', 0, 300, '', '', '', 1, '2016-05-20 00:00:00', '2016-05-20 00:00:00'),
-(4, '三三台東意象禮盒組', 0, 900, '', '', '', 1, '2016-05-20 00:00:00', '2016-05-20 00:00:00');
+INSERT INTO `ITEMMAS` (`ITEMNO`, `ITEMNM`, `ITEMAMT`, `PRICE`, `DESCRIPTION`, `PHOTO`, `PHOTOTYPE`, `CREATEDATE`, `UPDATEDATE`, `ACTCODE`) VALUES
+(1, '田靜山巒禾風皂', 0, 300, '', '', '', '2016-05-20 00:00:00', '2016-05-20 00:00:00', 0),
+(2, '釋迦手感果力皂', 0, 300, '', '', '', '2016-05-20 00:00:00', '2016-05-20 00:00:00', 0),
+(3, '金絲森林渲染皂', 0, 300, '', '', '', '2016-05-20 00:00:00', '2016-05-20 00:00:00', 0),
+(4, '三三台東意象禮盒組', 0, 900, '', '', '', '2016-05-20 00:00:00', '2016-05-20 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -96,25 +99,25 @@ INSERT INTO `ITEMMAS` (`ITEMNO`, `ITEMNM`, `ITEMAMT`, `PRICE`, `DESCRIPTION`, `P
 
 CREATE TABLE `MSGMAS` (
   `MSGNO` int(15) NOT NULL,
-  `CUSNO` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `EMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGTXT` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGPHOTO` mediumblob NOT NULL,
   `MSGPHOTOTYPE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGVIDEO` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'A',
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1',
   `CREATEDATE` datetime NOT NULL,
-  `PUBLICDATE` datetime NOT NULL
+  `PUBLICDATE` datetime NOT NULL,
+  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- 資料表的匯出資料 `MSGMAS`
 --
 
-INSERT INTO `MSGMAS` (`MSGNO`, `CUSNO`, `MSGTXT`, `MSGPHOTO`, `MSGPHOTOTYPE`, `MSGVIDEO`, `MSGSTAT`, `ACTCODE`, `CREATEDATE`, `PUBLICDATE`) VALUES
-(100000, 'A02705028', '123123', '', '', '', 'A', 1, '2016-06-13 14:58:45', '0000-00-00 00:00:00'),
-(100001, 'A02705028', '234234', '', '', '', 'A', 1, '2016-06-13 14:59:04', '0000-00-00 00:00:00'),
-(100002, 'A02705028', '345345', '', '', '', 'A', 1, '2016-06-13 14:59:13', '0000-00-00 00:00:00');
+INSERT INTO `MSGMAS` (`MSGNO`, `EMAIL`, `MSGTXT`, `MSGPHOTO`, `MSGPHOTOTYPE`, `MSGVIDEO`, `MSGSTAT`, `CREATEDATE`, `PUBLICDATE`, `ACTCODE`) VALUES
+(100000, 'A02705028', '123123', '', '', '', 'A', '2016-06-13 14:58:45', '0000-00-00 00:00:00', 0),
+(100001, 'A02705028', '234234', '', '', '', 'A', '2016-06-13 14:59:04', '0000-00-00 00:00:00', 0),
+(100002, 'A02705028', '345345', '', '', '', 'A', '2016-06-13 14:59:13', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -125,20 +128,11 @@ INSERT INTO `MSGMAS` (`MSGNO`, `CUSNO`, `MSGTXT`, `MSGPHOTO`, `MSGPHOTOTYPE`, `M
 CREATE TABLE `ORDITEMMAS` (
   `ORDNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ITEMNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `ITEMAMT` int(15) DEFAULT NULL,
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1',
+  `ORDAMT` int(8) DEFAULT NULL,
   `CREATEDATE` datetime NOT NULL,
-  `UPDATEDATE` datetime NOT NULL
+  `UPDATEDATE` datetime NOT NULL,
+  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 資料表的匯出資料 `ORDITEMMAS`
---
-
-INSERT INTO `ORDITEMMAS` (`ORDNO`, `ITEMNO`, `ITEMAMT`, `ACTCODE`, `CREATEDATE`, `UPDATEDATE`) VALUES
-('100000000', '1', 1, 1, '2016-06-13 17:58:57', '2016-06-13 17:58:57'),
-('100000000', '2', 2, 1, '2016-06-13 17:59:02', '2016-06-13 17:59:02'),
-('100000000', '3', 3, 1, '2016-06-13 17:59:06', '2016-06-13 17:59:06');
 
 -- --------------------------------------------------------
 
@@ -149,28 +143,20 @@ INSERT INTO `ORDITEMMAS` (`ORDNO`, `ITEMNO`, `ITEMAMT`, `ACTCODE`, `CREATEDATE`,
 CREATE TABLE `ORDMAS` (
   `ORDNO` int(15) NOT NULL,
   `ORDTYPE` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `CUSNO` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `EMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `INVOICENO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `BACKSTAT` tinyint(1) DEFAULT '1',
   `ORDSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT 'E',
-  `PAYSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '0',
-  `ORD_INST` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `TOTALPRICE` int(15) DEFAULT '0',
-  `SHIPFEE` int(15) DEFAULT '0',
-  `TOTALAMT` int(15) DEFAULT '0',
+  `PAYSTAT` tinyint(1) DEFAULT '0',
+  `ORDINST` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `TOTALPRICE` int(8) DEFAULT '0',
+  `SHIPFEE` int(8) DEFAULT '0',
+  `TOTALAMT` int(8) DEFAULT '0',
   `DATEREQ` date DEFAULT NULL,
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1',
   `CREATEDATE` datetime NOT NULL,
-  `UPDATEDATE` datetime NOT NULL
+  `UPDATEDATE` datetime NOT NULL,
+  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 資料表的匯出資料 `ORDMAS`
---
-
-INSERT INTO `ORDMAS` (`ORDNO`, `ORDTYPE`, `CUSNO`, `INVOICENO`, `BACKSTAT`, `ORDSTAT`, `PAYSTAT`, `ORD_INST`, `TOTALPRICE`, `SHIPFEE`, `TOTALAMT`, `DATEREQ`, `ACTCODE`, `CREATEDATE`, `UPDATEDATE`) VALUES
-(100000000, 'G', 'B02705028', NULL, 1, 'E', '0', '', 140, 20, 160, NULL, 1, '2016-06-13 17:54:45', '2016-06-13 17:54:45'),
-(900000000, '', 'B02705028', NULL, 1, 'E', '0', '', 0, 50, 0, NULL, 1, '2016-06-15 18:28:05', '2016-06-15 18:28:05');
 
 -- --------------------------------------------------------
 
@@ -179,11 +165,11 @@ INSERT INTO `ORDMAS` (`ORDNO`, `ORDTYPE`, `CUSNO`, `INVOICENO`, `BACKSTAT`, `ORD
 --
 
 CREATE TABLE `OWNMAS` (
-  `COMPANYNM` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `COMPANYADD` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `COMPANYTEL` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `COMPANYEMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `COMPANYTAXID` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `COMNM` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `COMADD` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `COMTEL` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `COMEMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `COMTAXID` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `NORDNOG` int(15) NOT NULL,
   `NORDNOS` int(15) NOT NULL,
   `NMSGNO` int(15) NOT NULL
@@ -193,18 +179,12 @@ CREATE TABLE `OWNMAS` (
 -- 資料表的匯出資料 `OWNMAS`
 --
 
-INSERT INTO `OWNMAS` (`COMPANYNM`, `COMPANYADD`, `COMPANYTEL`, `COMPANYEMAIL`, `COMPANYTAXID`, `NORDNOG`, `NORDNOS`, `NMSGNO`) VALUES
-('Trisoap', '', '', '', '', 100000001, 900000001, 100003);
+INSERT INTO `OWNMAS` (`COMNM`, `COMADD`, `COMTEL`, `COMEMAIL`, `COMTAXID`, `NORDNOG`, `NORDNOS`, `NMSGNO`) VALUES
+('Trisoap', '', '', '', '', 100000000, 900000000, 100000);
 
 --
 -- 已匯出資料表的索引
 --
-
---
--- 資料表索引 `CUSMAS`
---
-ALTER TABLE `CUSMAS`
-  ADD PRIMARY KEY (`EMAIL`);
 
 --
 -- 資料表索引 `ITEMMAS`
