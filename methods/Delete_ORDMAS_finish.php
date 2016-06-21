@@ -10,6 +10,7 @@ if($EMAIL != null){
         $queryORDNO = "SELECT * FROM ORDMAS where ORDNO='$ORDNO'";
         $result = mysql_query($queryORDNO);
         $row = mysql_fetch_row($result);
+        date_default_timezone_set('Asia/Taipei');
         $UPDATEDATE = date("Y-m-d H:i:s");
         if($row[5] != 'E'){
                 $message = $message . '此訂單已進入執行狀態，故無法取消<br>';

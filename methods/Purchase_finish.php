@@ -87,8 +87,9 @@
       						echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS.php>';
       					}
       					else{
+                  date_default_timezone_set('Asia/Taipei');
       						$CREATEDATE = date("Y-m-d H:i:s");
-      			        	$UPDATEDATE = date("Y-m-d H:i:s");
+      			      $UPDATEDATE = date("Y-m-d H:i:s");
       						$sql = "insert into ORDITEMMAS (ORDNO, ITEMNO, ITEMAMT, CREATEDATE, UPDATEDATE) values ('$ORDNO', '$ITEMNO', '$ITEMAMT', '$CREATEDATE', '$UPDATEDATE')";
       						unset($_SESSION['ITEMNO']);
       						if(mysql_query($sql)){

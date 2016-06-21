@@ -10,6 +10,7 @@ $message = null;
 if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $INVOICENO = $_POST['INVOICENO'];
+                date_default_timezone_set('Asia/Taipei');
                 $UPDATEDATE = date("Y-m-d H:i:s");
                 $sql = "UPDATE ORDMAS SET INVOICENO='$INVOICENO' WHERE ORDNO='$ORDNO'";
                 mysql_query($sql);

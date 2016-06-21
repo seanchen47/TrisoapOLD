@@ -16,6 +16,7 @@ if($EMAIL != null){
                 if($PW != $row[0]){
                         $message = $message . '密碼錯誤<br>';
                 }
+                date_default_timezone_set('Asia/Taipei');
                 $UPDATEDATE = date("Y-m-d H:i:s");
                 if($message == null){
                         $sql = "UPDATE ITEMMAS SET ACTCODE='1', UPDATEDATE='$UPDATEDATE' WHERE ITEMNO='$newITEMNO'";

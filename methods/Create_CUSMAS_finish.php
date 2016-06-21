@@ -18,6 +18,7 @@ $EMAIL = htmlentities($_POST['EMAIL']);
 $TAXID = htmlentities($_POST['TAXID']);
 $KNOWTYPE = $_POST['KNOWTYPE'];
 $SPEINS = htmlentities($_POST['SPEINS']);
+date_default_timezone_set('Asia/Taipei');
 $CREATEDATE = date("Y-m-d H:i:s");
 $UPDATEDATE = date("Y-m-d H:i:s");
 

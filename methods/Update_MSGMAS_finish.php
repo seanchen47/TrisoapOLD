@@ -9,6 +9,7 @@ $message = null;
 
 if($EMAIL != null){
         if($CUSIDT == 'A'){
+                date_default_timezone_set('Asia/Taipei');
                 $PUBLICDATE = date("Y-m-d H:i:s");
                 while($number >= 0){
                         $MSGNOnumber = 'MSGNO' . "$number";

@@ -14,6 +14,7 @@ if($EMAIL != null){
         $CUSPW = htmlentities($_POST['CUSPW']);
         $newCUSPW1 = htmlentities($_POST['newCUSPW1']);
         $newCUSPW2 = htmlentities($_POST['newCUSPW2']);
+        date_default_timezone_set('Asia/Taipei');
         $UPDATEDATE = date("Y-m-d H:i:s");
 
         if($CUSPW == null){

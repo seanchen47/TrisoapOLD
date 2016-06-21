@@ -10,6 +10,7 @@ if($EMAIL != null){
         if($CUSIDT == 'A'){
                 $ORDNO = $_POST['ORDNO'];
                 $ORDSTAT = $_POST['ORDSTAT'];
+                date_default_timezone_set('Asia/Taipei');
                 $UPDATEDATE = date("Y-m-d H:i:s");
                 $sql = "UPDATE ORDMAS SET ORDSTAT='$ORDSTAT', UPDATEDATE='$UPDATEDATE' WHERE ORDNO='$ORDNO'";
                 if(mysql_query($sql)

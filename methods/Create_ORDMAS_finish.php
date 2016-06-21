@@ -11,6 +11,7 @@ if($EMAIL != null){
 	$sql = "SELECT * FROM OWNMAS where COMPANYNM='Trisoap'";
     $result = mysql_query($sql);
     $row = mysql_fetch_row($result);
+    date_default_timezone_set('Asia/Taipei');
     $CREATEDATE = date("Y-m-d H:i:s");
     $UPDATEDATE = date("Y-m-d H:i:s");
     if($ORDTYPE == 'G'){

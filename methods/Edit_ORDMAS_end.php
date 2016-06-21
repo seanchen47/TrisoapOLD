@@ -21,6 +21,7 @@ if($EMAIL != null){
         unset($_SESSION['ORDNO']);
         if($message == null){
                 while($number > 0){
+                        date_default_timezone_set('Asia/Taipei');
                         $CREATEDATE = date("Y-m-d H:i:s");
                         $UPDATEDATE = date("Y-m-d H:i:s");
                         $ITEMNOnumber = 'ITEMNO' . "$number";

@@ -13,6 +13,7 @@ if($EMAIL != null){
     $fileContents = fread($file, filesize($_FILES["MSGPHOTO"]["tmp_name"])); 
     fclose($file);
     $MSGPHOTO = base64_encode($fileContents);
+    date_default_timezone_set('Asia/Taipei');
     $CREATEDATE = date("Y-m-d H:i:s");
     if($MSGTXT == null){
         $message = $message . '留言文字欄位不可空白<br>';

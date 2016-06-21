@@ -13,6 +13,7 @@ if($EMAIL != null)
         $TEL = htmlentities($_POST['TEL']);
         $SPEINS = htmlentities($_POST['SPEINS']);
         $TAXID = htmlentities($_POST['TAXID']);
+        date_default_timezone_set('Asia/Taipei');
         $UPDATEDATE = date("Y-m-d H:i:s");
 
         $message = null;
