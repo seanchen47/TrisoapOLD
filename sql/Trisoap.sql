@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost
--- 產生時間： 2016 年 06 月 21 日 21:08
+-- 產生時間： 2016 年 06 月 22 日 18:24
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.21
 
@@ -30,27 +30,27 @@ CREATE TABLE `cusmas` (
   `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,
   `CUSPW` varchar(15) COLLATE utf8_bin NOT NULL,
   `CUSNM` varchar(30) COLLATE utf8_bin NOT NULL,
-  `CUSIDT` varchar(1) COLLATE utf8_bin NOT NULL,
-  `CUSADD` varchar(100) COLLATE utf8_bin NOT NULL,
+  `CUSIDT` varchar(1) COLLATE utf8_bin NOT NULL DEFAULT 'B',
+  `CUSADD` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `CUSBIRTHY` tinyint(4) NOT NULL,
   `CUSBIRTHM` tinyint(2) NOT NULL,
   `CUSBIRTHD` tinyint(2) NOT NULL,
-  `COUNTRY` varchar(15) COLLATE utf8_bin NOT NULL,
-  `ZCODE` varchar(5) COLLATE utf8_bin NOT NULL,
-  `TEL` varchar(15) COLLATE utf8_bin NOT NULL,
+  `COUNTRY` varchar(15) COLLATE utf8_bin DEFAULT 'Taiwan',
+  `ZCODE` varchar(5) COLLATE utf8_bin DEFAULT NULL,
+  `TEL` varchar(15) COLLATE utf8_bin DEFAULT NULL,
   `CUSTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
   `KNOWTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
-  `CREDITSTAT` varchar(1) COLLATE utf8_bin NOT NULL,
-  `TAXID` varchar(15) COLLATE utf8_bin NOT NULL,
-  `DISCOUNT` int(8) NOT NULL,
-  `SALEAMTMTD` int(8) NOT NULL,
-  `SALEAMTSTD` int(8) NOT NULL,
-  `SALEAMTYTD` int(8) NOT NULL,
-  `SALEAMT` int(8) NOT NULL,
-  `CURAR` int(8) NOT NULL,
-  `SPEINS` varchar(100) COLLATE utf8_bin NOT NULL,
-  `CREATEDATE` datetime NOT NULL,
-  `UPDATEDATE` datetime NOT NULL,
+  `CREDITSTAT` varchar(1) COLLATE utf8_bin NOT NULL DEFAULT 'A',
+  `TAXID` varchar(15) COLLATE utf8_bin DEFAULT NULL,
+  `DISCOUNT` int(8) NOT NULL DEFAULT '0',
+  `SALEAMTMTD` int(8) NOT NULL DEFAULT '0',
+  `SALEAMTSTD` int(8) NOT NULL DEFAULT '0',
+  `SALEAMTYTD` int(8) NOT NULL DEFAULT '0',
+  `SALEAMT` int(8) NOT NULL DEFAULT '0',
+  `CURAR` int(8) NOT NULL DEFAULT '0',
+  `SPEINS` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `CREATEDATE` datetime DEFAULT NULL,
+  `UPDATEDATE` datetime DEFAULT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -110,15 +110,6 @@ CREATE TABLE `MSGMAS` (
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- 資料表的匯出資料 `MSGMAS`
---
-
-INSERT INTO `MSGMAS` (`MSGNO`, `EMAIL`, `MSGTXT`, `MSGPHOTO`, `MSGPHOTOTYPE`, `MSGVIDEO`, `MSGSTAT`, `CREATEDATE`, `PUBLICDATE`, `ACTCODE`) VALUES
-(100000, 'A02705028', '123123', '', '', '', 'A', '2016-06-13 14:58:45', '0000-00-00 00:00:00', 0),
-(100001, 'A02705028', '234234', '', '', '', 'A', '2016-06-13 14:59:04', '0000-00-00 00:00:00', 0),
-(100002, 'A02705028', '345345', '', '', '', 'A', '2016-06-13 14:59:13', '0000-00-00 00:00:00', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -150,6 +141,7 @@ CREATE TABLE `ORDMAS` (
   `PAYSTAT` tinyint(1) DEFAULT '0',
   `ORDINST` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `TOTALPRICE` int(8) DEFAULT '0',
+  `REALPRICE` int(8) NOT NULL,
   `SHIPFEE` int(8) DEFAULT '0',
   `TOTALAMT` int(8) DEFAULT '0',
   `DATEREQ` date DEFAULT NULL,
@@ -185,6 +177,12 @@ INSERT INTO `OWNMAS` (`COMNM`, `COMADD`, `COMTEL`, `COMEMAIL`, `COMTAXID`, `NORD
 --
 -- 已匯出資料表的索引
 --
+
+--
+-- 資料表索引 `cusmas`
+--
+ALTER TABLE `cusmas`
+  ADD PRIMARY KEY (`EMAIL`);
 
 --
 -- 資料表索引 `ITEMMAS`
