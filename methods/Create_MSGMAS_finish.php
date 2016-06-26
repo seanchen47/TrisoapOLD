@@ -15,6 +15,7 @@ if($EMAIL != null){
     $MSGPHOTO = base64_encode($fileContents);
     date_default_timezone_set('Asia/Taipei');
     $CREATEDATE = date("Y-m-d H:i:s");
+    $MAILDATE = date("Y-m-d");
     if($MSGTXT == null){
         $message = $message . '留言文字欄位不可空白<br>';
     }
@@ -45,14 +46,43 @@ if($EMAIL != null){
             $sql = "UPDATE OWNMAS SET NMSGNO=NMSGNO+1 where COMNM='Trisoap'";
             mysql_query($sql);
             echo "新增留心語成功";
-            mb_internal_encoding("utf-8");
-            $to="$EMAIL";
-            $subject=mb_encode_mimeheader("已收到您的留心語","utf-8");
-            $message="信件內容";
-            $headers="MIME-Version: 1.0\r\n";
-            $headers.="Content-type: text/html; charset=utf-8\r\n";
-            $headers.="From:".mb_encode_mimeheader("三三吾鄉手工皂","utf-8")."<寄件者電子郵件>\r\n";
-            mail($to,$subject,$message,$headers);
+
+            include("PHPMailerAutoload.php"); //匯入PHPMailer類別       
+            $mail= new PHPMailer(); //建立新物件        
+            $mail->IsSMTP(); //設定使用SMTP方式寄信        
+            $mail->SMTPAuth = true; //設定SMTP需要驗證        
+            $mail->SMTPSecure = 'ssl'; // Gmail的SMTP主機需要使用SSL連線   
+            $mail->Host = "smtp.gmail.com"; //Gamil的SMTP主機        
+            $mail->Port = 465;  //Gamil的SMTP主機的SMTP埠位為465埠。
+            $mail->IsHTML(true); //設定郵件內容為HTML        
+            $mail->CharSet = "utf-8"; //設定郵件編碼        
+            $mail->Username = "trisoap2015@gmail.com"; //設定驗證帳號        
+            $mail->Password = "n0n02015"; //設定驗證密碼        
+            $mail->From = "trisoap2015@gmail.com"; //設定寄件者信箱        
+            $mail->FromName = "三三吾鄉社會企業"; //設定寄件者姓名        
+            $mail->Subject = "三三吾鄉希望留心語通知信"; //設定郵件標題        
+            $mail->Body = "親愛的三三客戶您好：<br>
+            <br>
+            我們在此誠摯的感謝您參與三三吾鄉「希望留心語」的活動，本活動的出發便是希望可以透過社福模式的翻轉，讓消費者跟我們的身障夥伴有更多的互動，以讓他們增加和社會的聯結。<br>
+            <br>
+            目前您所提交的留心語內容已進入審核的程序，為避免惡意散播訊息、惡意攻擊等因素，三三吾鄉團隊將會花1-3天的時間審核各方提交之訊息，若您所投遞的訊息通過後我們將會再來信通知您，並將折扣金附於信中，還請您耐心等候。<br>
+            <br>
+            感謝您的體諒以及對三三吾鄉的支持，希望您和我們一起共同，持續為身障議題發聲。<br>
+            <br>
+            三三吾鄉社會企業團隊敬上<br>" .
+            $MAILDATE . "<br>
+            ________________________________<br>
+            <br>
+            三三吾鄉社會企業<br>
+            地址：106台北市大安區和平東路二段265巷3號<br>
+            email : trisaop2015@gmail.com<br>
+            網址 : xxxxxxxxxxxxx<br>      
+            "; //設定郵件內容                
+            $mail->AddAddress("$EMAIL"); //設定收件者郵件及名稱
+            if(!$mail->Send()) {        
+                echo "Mail not sent!";        
+            }
+
             echo '<meta http-equiv=REFRESH CONTENT=2;url=../Message/Message.php>';
         }
         else{
