@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost
--- 產生時間： 2016 年 06 月 22 日 18:24
+-- 產生時間： 2016 年 06 月 27 日 13:03
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.21
 
@@ -19,48 +19,6 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `Trisoap`
 --
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `cusmas`
---
-
-CREATE TABLE `cusmas` (
-  `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,
-  `CUSPW` varchar(15) COLLATE utf8_bin NOT NULL,
-  `CUSNM` varchar(30) COLLATE utf8_bin NOT NULL,
-  `CUSIDT` varchar(1) COLLATE utf8_bin NOT NULL DEFAULT 'B',
-  `CUSADD` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `CUSBIRTHY` tinyint(4) NOT NULL,
-  `CUSBIRTHM` tinyint(2) NOT NULL,
-  `CUSBIRTHD` tinyint(2) NOT NULL,
-  `COUNTRY` varchar(15) COLLATE utf8_bin DEFAULT 'Taiwan',
-  `ZCODE` varchar(5) COLLATE utf8_bin DEFAULT NULL,
-  `TEL` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `CUSTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
-  `KNOWTYPE` varchar(1) COLLATE utf8_bin NOT NULL,
-  `CREDITSTAT` varchar(1) COLLATE utf8_bin NOT NULL DEFAULT 'A',
-  `TAXID` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `DISCOUNT` int(8) NOT NULL DEFAULT '0',
-  `SALEAMTMTD` int(8) NOT NULL DEFAULT '0',
-  `SALEAMTSTD` int(8) NOT NULL DEFAULT '0',
-  `SALEAMTYTD` int(8) NOT NULL DEFAULT '0',
-  `SALEAMT` int(8) NOT NULL DEFAULT '0',
-  `CURAR` int(8) NOT NULL DEFAULT '0',
-  `SPEINS` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `CREATEDATE` datetime DEFAULT NULL,
-  `UPDATEDATE` datetime DEFAULT NULL,
-  `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- 資料表的匯出資料 `cusmas`
---
-
-INSERT INTO `cusmas` (`EMAIL`, `CUSPW`, `CUSNM`, `CUSIDT`, `CUSADD`, `CUSBIRTHY`, `CUSBIRTHM`, `CUSBIRTHD`, `COUNTRY`, `ZCODE`, `TEL`, `CUSTYPE`, `KNOWTYPE`, `CREDITSTAT`, `TAXID`, `DISCOUNT`, `SALEAMTMTD`, `SALEAMTSTD`, `SALEAMTYTD`, `SALEAMT`, `CURAR`, `SPEINS`, `CREATEDATE`, `UPDATEDATE`, `ACTCODE`) VALUES
-('A02705028', '123', 'Tim', 'A', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-('B02705028', '123', 'Tim', 'B', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -105,10 +63,50 @@ CREATE TABLE `MSGMAS` (
   `MSGPHOTOTYPE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGVIDEO` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'A',
+  `REWARDSTAT` tinyint(1) NOT NULL DEFAULT '0',
   `CREATEDATE` datetime NOT NULL,
   `PUBLICDATE` datetime NOT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 資料表的匯出資料 `MSGMAS`
+--
+
+INSERT INTO `MSGMAS` (`MSGNO`, `EMAIL`, `MSGTXT`, `MSGPHOTO`, `MSGPHOTOTYPE`, `MSGVIDEO`, `MSGSTAT`, `REWARDSTAT`, `CREATEDATE`, `PUBLICDATE`, `ACTCODE`) VALUES
+(100000, 'B02705028', '123', '', '', '', 'A', 0, '2016-06-23 01:47:02', '0000-00-00 00:00:00', 1),
+(100001, 'a0922825881@gmail.com', '123123', '', '', '', 'A', 0, '2016-06-23 01:49:55', '0000-00-00 00:00:00', 1),
+(100002, 'tim841206@yahoo.com.tw', '123', '', '', '', 'A', 0, '2016-06-23 01:56:49', '0000-00-00 00:00:00', 1),
+(100003, 'B02705028', '1231', '', '', '', 'A', 0, '2016-06-25 16:08:54', '0000-00-00 00:00:00', 1),
+(100004, 'B02705028', '123', '', '', '', 'A', 0, '2016-06-25 16:09:05', '0000-00-00 00:00:00', 1),
+(100005, 'B02705028', '123', '', '', '', 'A', 0, '2016-06-25 16:09:18', '0000-00-00 00:00:00', 1),
+(100006, 'B02705028', '123', '', '', '', 'A', 0, '2016-06-25 16:10:32', '0000-00-00 00:00:00', 1),
+(100007, 'B02705028', '123', '', '', '', 'A', 0, '2016-06-25 16:11:00', '0000-00-00 00:00:00', 1),
+(100008, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:11:56', '0000-00-00 00:00:00', 1),
+(100009, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:12:09', '0000-00-00 00:00:00', 1),
+(100010, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:19:34', '0000-00-00 00:00:00', 1),
+(100011, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:19:43', '0000-00-00 00:00:00', 1),
+(100012, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:28:21', '0000-00-00 00:00:00', 1),
+(100013, 'a0922825881@gmail.com', '333', '', '', '', 'A', 0, '2016-06-25 16:31:53', '0000-00-00 00:00:00', 1),
+(100014, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:32:13', '0000-00-00 00:00:00', 1),
+(100015, 'a0922825881@gmail.com', '123123', '', '', '', 'A', 0, '2016-06-25 16:48:58', '0000-00-00 00:00:00', 1),
+(100016, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:52:53', '0000-00-00 00:00:00', 1),
+(100017, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:53:03', '0000-00-00 00:00:00', 1),
+(100018, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:55:20', '0000-00-00 00:00:00', 1),
+(100019, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:55:43', '0000-00-00 00:00:00', 1),
+(100020, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 16:56:20', '0000-00-00 00:00:00', 1),
+(100021, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:02:08', '0000-00-00 00:00:00', 1),
+(100022, 'a0922825881@gmail.com', '123123', '', '', '', 'A', 0, '2016-06-25 17:02:23', '0000-00-00 00:00:00', 1),
+(100023, 'a0922825881@gmail.com', '嗨嗨', '', '', '', 'A', 0, '2016-06-25 17:05:20', '0000-00-00 00:00:00', 1),
+(100024, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:07:41', '0000-00-00 00:00:00', 1),
+(100025, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:10:08', '0000-00-00 00:00:00', 1),
+(100026, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:16:01', '0000-00-00 00:00:00', 1),
+(100027, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:16:53', '0000-00-00 00:00:00', 1),
+(100028, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:17:35', '0000-00-00 00:00:00', 1),
+(100029, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:19:57', '0000-00-00 00:00:00', 1),
+(100030, 'a0922825881@gmail.com', '121212', '', '', '', 'A', 0, '2016-06-25 17:21:48', '0000-00-00 00:00:00', 1),
+(100031, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:26:45', '0000-00-00 00:00:00', 1),
+(100032, 'a0922825881@gmail.com', '123', '', '', '', 'A', 0, '2016-06-25 17:39:04', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -117,8 +115,8 @@ CREATE TABLE `MSGMAS` (
 --
 
 CREATE TABLE `ORDITEMMAS` (
-  `ORDNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `ITEMNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ORDNO` int(15) NOT NULL,
+  `ITEMNO` int(15) NOT NULL,
   `ORDAMT` int(8) DEFAULT NULL,
   `CREATEDATE` datetime NOT NULL,
   `UPDATEDATE` datetime NOT NULL,
@@ -139,6 +137,7 @@ CREATE TABLE `ORDMAS` (
   `BACKSTAT` tinyint(1) DEFAULT '1',
   `ORDSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT 'E',
   `PAYSTAT` tinyint(1) DEFAULT '0',
+  `PAYTYPE` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ORDINST` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `TOTALPRICE` int(8) DEFAULT '0',
   `REALPRICE` int(8) NOT NULL,
@@ -172,17 +171,11 @@ CREATE TABLE `OWNMAS` (
 --
 
 INSERT INTO `OWNMAS` (`COMNM`, `COMADD`, `COMTEL`, `COMEMAIL`, `COMTAXID`, `NORDNOG`, `NORDNOS`, `NMSGNO`) VALUES
-('Trisoap', '', '', '', '', 100000000, 900000000, 100000);
+('Trisoap', '', '', '', '', 100000000, 900000000, 100033);
 
 --
 -- 已匯出資料表的索引
 --
-
---
--- 資料表索引 `cusmas`
---
-ALTER TABLE `cusmas`
-  ADD PRIMARY KEY (`EMAIL`);
 
 --
 -- 資料表索引 `ITEMMAS`
