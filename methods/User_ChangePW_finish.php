@@ -40,42 +40,28 @@ if($EMAIL != null){
 
         if($count == 0){
                 $sql = "UPDATE CUSMAS SET CUSPW = '$newCUSPW1', UPDATEDATE ='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
-                if(mysql_query($sql))
-                {
-                        //echo '更新成功';
-                        if($CUSIDT == 'A'){          
+                if(mysql_query($sql)){               
 ?>
-                                <script>
-                                        //function myFunction() {
-                                        alert("密碼修改成功，請重新登入");
-                                        //}
-                                </script>
+                        <script>
+                        alert("密碼修改成功");
+                        </script>
 <?php
-                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.php>';
-
-                        }
-                        else{
-                                
-?>
-                                <script>
-                                        //function myFunction() {
-                                        alert("密碼修改成功，請重新登入");
-                                        //}
-                                </script>
-<?php
-                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.php>';
-                        }
+                        echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.php>';
                         
                 }
                 else
                 {
-                        echo '更新失敗';
-                        echo '<meta http-equiv=REFRESH CONTENT=2;url=User_ChangePW.php>';
+?>
+                        <script>
+                        alert("密碼修改失敗");
+                        </script>
+<?php
+                        echo '<meta http-equiv=REFRESH CONTENT=2;url=User_ChangePW1.php>';
                 }
         }
         else{
                 echo $message;
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=User_ChangePW.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=User_ChangePW1.php>';
         }
 }
 else{

@@ -100,7 +100,7 @@
 
                         if($message != null){
                             echo $message;
-                            echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_CUSMAS.php>';
+                            echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_CUSMAS1.php>';
                         }
                         else{
                             $sql = "SELECT * FROM ITEMMAS where ITEMNO='3'";
@@ -132,12 +132,15 @@
                         }
                     }
                     else{
-                        echo "此商品目前下架中";
+            ?>
+                    <script>
+                        alert("此商品目前下架中");
+                    </script>
+            <?php
                         echo '<meta http-equiv=REFRESH CONTENT=2;url=../Product/Product.php>';
                     }
                 }
                 else{
-                    //echo "請先建立訂單<br>";
             ?>
                     <script>
                         alert("請先建立新訂單");
@@ -147,7 +150,11 @@
                 }
             }
             else{
-                echo '請先登入或註冊!';
+            ?>
+                    <script>
+                        alert("請先登入或註冊");
+                    </script>
+            <?php
                 echo '<meta http-equiv=REFRESH CONTENT=2;url=../HomePages/index.php>';
             }
             ?>

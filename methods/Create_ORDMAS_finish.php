@@ -16,7 +16,7 @@ if($EMAIL != null){
     $UPDATEDATE = date("Y-m-d H:i:s");
     if($ORDTYPE == 'G'){
         $SHIPFEE = 20;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, EMAIL, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[5]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
     		$sql = "UPDATE OWNMAS SET NORDNOG=NORDNOG+1 where COMNM='Trisoap'";
     		mysql_query($sql);
@@ -24,19 +24,23 @@ if($EMAIL != null){
     		//echo "建立訂單成功";
 ?>
             <script>
-                alert("訂單建立成功");
+                alert("訂單建立成功，請重新選擇商品。");
             </script>
 <?php
-    		echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Purchase_finish1.php>';
+    		echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Purchase_finish.php>';
     	}
     	else{
-    		echo "建立訂單失敗";
-    		echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS.php>';
+?>
+            <script>
+                alert("訂單建立失敗");
+            </script>
+<?php
+    		echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS1.php>';
     	}
     }
     else{
         $SHIPFEE = 50;
-    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, CUSNO, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
+    	$sql = "insert into ORDMAS (ORDNO, ORDTYPE, EMAIL, ORDINST, SHIPFEE, CREATEDATE, UPDATEDATE) values ('$row[6]', '$ORDTYPE', '$EMAIL', '$ORDINST', '$SHIPFEE', '$CREATEDATE', '$UPDATEDATE')";
     	if(mysql_query($sql)){
     		$sql = "UPDATE OWNMAS SET NORDNOS=NORDNOS+1 where COMNM='Trisoap'";
     		mysql_query($sql);
@@ -44,14 +48,18 @@ if($EMAIL != null){
     		//echo "建立訂單成功";
 ?>
             <script>
-                alert("訂單建立成功，請重新選擇商品");
+                alert("訂單建立成功，請重新選擇商品。");
             </script>
 <?php
     		echo '<meta http-equiv=REFRESH CONTENT=0.5;url=Purchase_finish.php>';
     	}
     	else{
-    		echo "建立訂單失敗";
-    		echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS.php>';
+?>
+            <script>
+                alert("訂單建立失敗");
+            </script>
+<?php
+    		echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_ORDMAS1.php>';
     	}
     }
 }

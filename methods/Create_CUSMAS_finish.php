@@ -33,8 +33,6 @@ $TAXID = htmlentities($_POST['TAXID']);
 $KNOWTYPE = $_POST['KNOWTYPE'];
 $SPEINS = htmlentities($_POST['SPEINS']);
 date_default_timezone_set('Asia/Taipei');
-$CREATEDATE = date("Y-m-d H:i:s");
-$UPDATEDATE = date("Y-m-d H:i:s");
 $MAILDATE = date("Y-m-d");
 
 if($EMAIL == null){
@@ -107,7 +105,11 @@ if($message == ''){
         "; //設定郵件內容                
         $mail->AddAddress("$EMAIL"); //設定收件者郵件及名稱
         if(!$mail->Send()) {        
-            echo "Mail not sent!";        
+            ?>
+            <script>
+            alert("信件未寄出");
+            </script>
+            <?php       
         }
         $_SESSION['CUSNM'] = $CUSNM;
         $_SESSION['CUSPW'] = $CUSPW1;

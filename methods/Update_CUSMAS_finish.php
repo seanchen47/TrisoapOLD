@@ -44,34 +44,17 @@ if($EMAIL != null)
         $sql = "UPDATE CUSMAS SET UPDATEDATE='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
         mysql_query($sql);
 
-        if ($message == null){
-                //echo '更新成功';
-                        if($CUSIDT == 'A'){          
+        if ($message == null){    
 ?>
-                                <script>
-                                        //function myFunction() {
-                                        alert("資料修改成功");
-                                        //}
-                                </script>
+                <script>
+                        alert("資料修改成功");
+                </script>
 <?php
-                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_manager.php>';
-
-                        }
-                        else{
-                                
-?>
-                                <script>
-                                        //function myFunction() {
-                                        alert("資料修改成功");
-                                        //}
-                                </script>
-<?php
-                                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_customer.php>';
-                        }
+                echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.php>';
         }
         else{
                 echo $message;
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_CUSMAS.php>';
+                echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_CUSMAS1.php>';
         }
 }
 else

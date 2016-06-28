@@ -34,7 +34,12 @@ if($count == 0){
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);
         $_SESSION['CUSIDT'] = $row[0];
-        if($row[0] == 'A'){
+        ?>
+            <script>
+                alert("成功登入");
+            </script>
+        <?php
+        if($row[0] == 'A'){ 
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index_manager.php>';
         }
         else{
