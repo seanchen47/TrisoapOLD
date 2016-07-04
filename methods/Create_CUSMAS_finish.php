@@ -36,31 +36,34 @@ date_default_timezone_set('Asia/Taipei');
 $MAILDATE = date("Y-m-d");
 
 if($EMAIL == null){
-        $message = $message . '電子信箱欄位不可空白<br>';
+        $message = $message . '電子信箱欄位不可空白  ';
 }
 $queryEMAIL = "SELECT EMAIL FROM CUSMAS where EMAIL = '$EMAIL'";
 $result = mysql_query($queryEMAIL);
 $row = mysql_fetch_row($result);
 if($row[0] != null){
-        $message = $message . '此電子信箱已存在<br>';
+        $message = $message . '此電子信箱已存在  ';
 }
 if($CUSNM == null){
-        $message = $message . '姓名欄位不可空白<br>';
+        $message = $message . '姓名欄位不可空白  ';
 }  
 if($CUSPW1 == null || $CUSPW2 == null){
-        $message = $message . '密碼欄位不可空白<br>';
+        $message = $message . '密碼欄位不可空白  ';
 }
 if($CUSPW1 != $CUSPW2){
-        $message = $message . '請重新確認您的密碼<br>';
+        $message = $message . '請重新確認您的密碼  ';
+}
+if((strlen($CUSPW1) > 15) || (strlen($CUSPW2) > 15)){
+        $message = $message . '密碼不可超過15字元  ';
 }
 if($CUSTYPE == null){
-        $message = $message . '膚質欄位不可空白<br>';
+        $message = $message . '膚質欄位不可空白  ';
 }
 if($CUSBIRTHY == null || $CUSBIRTHM == null || $CUSBIRTHD == null){
-        $message = $message . '生日欄位不可空白<br>';
+        $message = $message . '生日欄位不可空白  ';
 }
 if($KNOWTYPE == null){
-        $message = $message . '如何認識三三欄位不可空白<br>';
+        $message = $message . '如何認識三三欄位不可空白  ';
 }
 
 if($message == ''){
@@ -178,7 +181,11 @@ if($message == ''){
     <?php
 }
 else{
-        echo $message;
+        ?>
+        <script>
+            alert("<?echo $message;?>");
+        </script>
+        <?
         echo '<meta http-equiv=REFRESH CONTENT=2;url=Create_CUSMAS1.php>';
 }
 ?>
