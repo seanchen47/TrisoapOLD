@@ -24,7 +24,7 @@
 		</div>
 		<div class="login-box animated fadeInUp">
 			<div class="box-header">
-				<h2>Sign In</h2>
+				<h2>登入</h2>
 			</div>
 			<form name="form" method="post" action="User_login_finish.php">
 				<label for="username">電子信箱<br><input type="text" name="EMAIL" /></label><br>

@@ -41,7 +41,7 @@
 		        $SPEINS = $_SESSION['SPEINS'];
 		        ?>
 				<label for="username">電子信箱*<input type="text" name="EMAIL" value="<?echo $EMAIL;?>"/>  您的姓名*<input type="text" name="CUSNM" value="<?echo $CUSNM;?>"/></label><br>
-				<label for="username">密碼長度上限為15字元</label><br>
+				<label for="username">密碼限定使用英數字，長度上限為15字元</label><br>
 				<label for="password">設定密碼*<input type="password" name="CUSPW1" />  再次輸入*<input type="password" name="CUSPW2" /></label><br>		
 					<label for="username">
 						<div class="styled-select">您的生日* 年<select name="CUSBIRTHY">

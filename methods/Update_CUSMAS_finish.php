@@ -19,27 +19,27 @@ if($EMAIL != null)
         $message = null;
         $sql = "UPDATE CUSMAS SET CUSNM='$CUSNM' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新姓名失敗<br>';
+                $message = $message . '更新姓名失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET CUSADD='$CUSADD' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新地址失敗<br>';
+                $message = $message . '更新地址失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET CUSTYPE='$CUSTYPE' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新膚質失敗<br>';
+                $message = $message . '更新膚質失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET TEL='$TEL' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新電話失敗<br>';
+                $message = $message . '更新電話失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET SPEINS='$SPEINS' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新特殊要求失敗<br>';
+                $message = $message . '更新特殊要求失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET TAXID='$TAXID' WHERE EMAIL='$EMAIL'";
         if(!mysql_query($sql)){
-                $message = $message . '更新統一編號失敗<br>';
+                $message = $message . '更新統一編號失敗 \n';
         }
         $sql = "UPDATE CUSMAS SET UPDATEDATE='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
         mysql_query($sql);
@@ -53,7 +53,11 @@ if($EMAIL != null)
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=../Homepages/index.php>';
         }
         else{
-                echo $message;
+?>
+                <script>
+                        alert("<?echo $message;?>");
+                </script>
+<?php
                 echo '<meta http-equiv=REFRESH CONTENT=2;url=Update_CUSMAS1.php>';
         }
 }

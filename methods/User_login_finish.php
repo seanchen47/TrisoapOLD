@@ -2,19 +2,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
 include("mysql_connect.php");
-$count = 0;
-$message = null;
+$message = '';
 
 $EMAIL = htmlentities($_POST['EMAIL']);
 $CUSPW = htmlentities($_POST['CUSPW']);
 
 if($EMAIL == null){
-        $count += 1;
-        $message = $message . '電子信箱欄位不可空白<br>';
+        $message = $message . '電子信箱欄位不可空白 \n';
 }
 if($CUSPW == null){
-        $count += 1;
-        $message = $message . '密碼欄位不可空白<br>';
+        $message = $message . '密碼欄位不可空白 \n';
 }
 
 //搜尋資料庫資料
@@ -23,13 +20,11 @@ $result = mysql_query($sql);
 $row = mysql_fetch_row($result);
 
 if($CUSPW != $row[0]){
-        $count += 1;
-        $message = $message . '密碼錯誤<br>';
+        $message = $message . '密碼錯誤 \n';
 }
 
-if($count == 0){
+if($message == null){
         $_SESSION['EMAIL'] = $EMAIL;
-        //echo "登入成功";
         $sql = "SELECT CUSIDT FROM CUSMAS where EMAIL = '$EMAIL'";
         $result = mysql_query($sql);
         $row = mysql_fetch_row($result);
@@ -48,7 +43,11 @@ if($count == 0){
 }
 else
 {
-	echo $message;
+        ?>
+            <script>
+                alert("<?echo $message;?>");
+            </script>
+        <?php
         echo '<meta http-equiv=REFRESH CONTENT=1;url=User_login1.php>';
 }
 ?>

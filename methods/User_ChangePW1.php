@@ -35,6 +35,7 @@
 			</div>
 			<form name="form" method="post" action="User_ChangePW_finish.php">
 				<label for="password">原始密碼<br><input type="password" name="CUSPW" /></label><br>
+				<label for="username">密碼限定使用英數字，長度上限為15字元</label><br>
 				<label for="password">新密碼<br><input type="password" name="newCUSPW1" /></label><br>
 				<label for="password">再一次輸入新密碼<br><input type="password" name="newCUSPW2" /></label><br>
 				

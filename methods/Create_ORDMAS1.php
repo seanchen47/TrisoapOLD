@@ -38,14 +38,14 @@
 			echo "<form name=\"form\" method=\"post\" action=\"Create_ORDMAS_finish.php\">";
 			?>
 	        <label for="username">
-				<div class="styled-select">訂單種類* <br>
+				<div class="styled-select">訂單種類*<br>
 					<select name="ORDTYPE">
-						<option value=""></option>
+						<!--<option value=""></option>-->
 						<option value="G">一般處理</option>
-						<option value="S">特別處理</option>
+						<!--<option value="S">特別處理</option>-->
 				</select></div>
 			</label>
-			<h5>特別處理需付額外費用</h5><br>
+			<!--<h5>特別處理需付額外費用</h5><br>-->
 
 	        <label for="username">額外指令<br>
 	        	<?php

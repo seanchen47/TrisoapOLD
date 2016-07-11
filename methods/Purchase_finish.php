@@ -79,6 +79,12 @@
       			$ITEMNO = $_SESSION['ITEMNO'];
       			$ORDNO = $_SESSION['ORDNO'];
       			$ITEMAMT = htmlentities($_POST['ITEMAMT']);
+            if(is_numeric($ITEMAMT) == FALSE){
+              $ITEMAMT = '0';
+            }
+            elseif($ITEMAMT < 0){
+              $ITEMAMT = '0';
+            }
 
       			if($EMAIL != null){
       				if($ITEMNO != null){

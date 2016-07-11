@@ -2,8 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
 include("mysql_connect.php");
-$count = 0;
-$message = null;
+$message = '';
 $EMAIL = $_SESSION['EMAIL'];
 $CUSIDT = $_SESSION['CUSIDT'];
 
@@ -18,27 +17,25 @@ if($EMAIL != null){
         $UPDATEDATE = date("Y-m-d H:i:s");
 
         if($CUSPW == null){
-                $count += 1;
-                $message = $message . '原始密碼欄位不可空白<br>';
+                $message = $message . '原始密碼欄位不可空白 \n';
         }
         if($CUSPW != $row[0]){
-                $count += 1;
-                $message = $message . '原始密碼錯誤<br>';
+                $message = $message . '原始密碼錯誤 \n';
         }
-        if($newCUSPW1 == null){
-                $count += 1;
-                $message = $message . '新密碼欄位不可空白<br>';
+        if(($newCUSPW1 == null) || ($newCUSPW2 == null)){
+                $message = $message . '新密碼欄位不可空白 \n';
         }
-        if($newCUSPW2 == null){
-                $count += 1;
-                $message = $message . '再一次輸入新密碼欄位不可空白<br>';
-        }  
+        if((strlen($newCUSPW1) > 15) || (strlen($newCUSPW2) > 15)){
+                $message = $message . '密碼不可超過15字元 \n';
+        }
         if($newCUSPW1 != $newCUSPW2){
-                $count += 1;
-                $message = $message . '請重新確認您的新密碼<br>';
+                $message = $message . '請重新確認您的新密碼 \n';
+        }
+        if((ctype_alnum($newCUSPW1) == FALSE) || (ctype_alnum($newCUSPW2) == FALSE)){
+                $message = $message . '密碼必須為英數字 \n';
         }
 
-        if($count == 0){
+        if($message == null){
                 $sql = "UPDATE CUSMAS SET CUSPW = '$newCUSPW1', UPDATEDATE ='$UPDATEDATE' WHERE EMAIL='$EMAIL'";
                 if(mysql_query($sql)){               
 ?>
@@ -60,7 +57,11 @@ if($EMAIL != null){
                 }
         }
         else{
-                echo $message;
+?>
+                        <script>
+                        alert("<?echo $message;?>");
+                        </script>
+<?php
                 echo '<meta http-equiv=REFRESH CONTENT=2;url=User_ChangePW1.php>';
         }
 }
