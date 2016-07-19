@@ -52,8 +52,8 @@ if($EMAIL != null){
             $mail->IsSMTP(); //設定使用SMTP方式寄信        
             $mail->SMTPAuth = true; //設定SMTP需要驗證        
             $mail->SMTPSecure = 'ssl'; // Gmail的SMTP主機需要使用SSL連線   
-            $mail->Host = "smtp.gmail.com"; //Gamil的SMTP主機        
-            $mail->Port = 465;  //Gamil的SMTP主機的SMTP埠位為465埠。
+            $mail->Host = "smtp.gmail.com"; //Gmail的SMTP主機        
+            $mail->Port = 465;  //Gmail的SMTP主機的SMTP埠位為465埠。
             $mail->IsHTML(true); //設定郵件內容為HTML        
             $mail->CharSet = "utf-8"; //設定郵件編碼        
             $mail->Username = "trisoap2015@gmail.com"; //設定驗證帳號        

@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- 資料表結構 `cusmas`
 --
 
-CREATE TABLE `cusmas` (
+CREATE TABLE `CUSMAS` (
   `EMAIL` varchar(50) COLLATE utf8_bin NOT NULL,
   `CUSPW` varchar(15) COLLATE utf8_bin NOT NULL,
   `CUSNM` varchar(30) COLLATE utf8_bin NOT NULL,
@@ -55,10 +55,10 @@ CREATE TABLE `cusmas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- 資料表的匯出資料 `cusmas`
+-- 資料表的匯出資料 `CUSMAS`
 --
 
-INSERT INTO `cusmas` (`EMAIL`, `CUSPW`, `CUSNM`, `CUSIDT`, `CUSADD`, `CUSBIRTHY`, `CUSBIRTHM`, `CUSBIRTHD`, `COUNTRY`, `ZCODE`, `TEL`, `CUSTYPE`, `KNOWTYPE`, `CREDITSTAT`, `TAXID`, `DISCOUNT`, `SALEAMTMTD`, `SALEAMTSTD`, `SALEAMTYTD`, `SALEAMT`, `CURAR`, `SPEINS`, `CREATEDATE`, `UPDATEDATE`, `ACTCODE`) VALUES
+INSERT INTO `CUSMAS` (`EMAIL`, `CUSPW`, `CUSNM`, `CUSIDT`, `CUSADD`, `CUSBIRTHY`, `CUSBIRTHM`, `CUSBIRTHD`, `COUNTRY`, `ZCODE`, `TEL`, `CUSTYPE`, `KNOWTYPE`, `CREDITSTAT`, `TAXID`, `DISCOUNT`, `SALEAMTMTD`, `SALEAMTSTD`, `SALEAMTYTD`, `SALEAMT`, `CURAR`, `SPEINS`, `CREATEDATE`, `UPDATEDATE`, `ACTCODE`) VALUES
 ('A02705028', '123', 'Tim', 'A', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
 ('B02705028', '123', 'Tim', 'B', 'No', 0, 0, 0, '', '', '0922825881', 'A', 'A', 'A', '', 0, 0, 0, 0, 0, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
 
@@ -79,7 +79,7 @@ CREATE TABLE `ITEMMAS` (
   `CREATEDATE` datetime NOT NULL,
   `UPDATEDATE` datetime NOT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- 資料表的匯出資料 `ITEMMAS`
@@ -105,10 +105,11 @@ CREATE TABLE `MSGMAS` (
   `MSGPHOTOTYPE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGVIDEO` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MSGSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'A',
+  `REWARDSTAT` tinyint(1) NOT NULL DEFAULT '0',
   `CREATEDATE` datetime NOT NULL,
   `PUBLICDATE` datetime NOT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -120,10 +121,11 @@ CREATE TABLE `ORDITEMMAS` (
   `ORDNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ITEMNO` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ORDAMT` int(8) DEFAULT NULL,
+  `EMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `CREATEDATE` datetime NOT NULL,
   `UPDATEDATE` datetime NOT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -139,6 +141,7 @@ CREATE TABLE `ORDMAS` (
   `BACKSTAT` tinyint(1) DEFAULT '1',
   `ORDSTAT` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT 'E',
   `PAYSTAT` tinyint(1) DEFAULT '0',
+  `PAYTYPE` varchar(1) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `ORDINST` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `TOTALPRICE` int(8) DEFAULT '0',
   `REALPRICE` int(8) NOT NULL,
@@ -148,7 +151,7 @@ CREATE TABLE `ORDMAS` (
   `CREATEDATE` datetime NOT NULL,
   `UPDATEDATE` datetime NOT NULL,
   `ACTCODE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -165,23 +168,23 @@ CREATE TABLE `OWNMAS` (
   `NORDNOG` int(15) NOT NULL,
   `NORDNOS` int(15) NOT NULL,
   `NMSGNO` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- 資料表的匯出資料 `OWNMAS`
 --
 
 INSERT INTO `OWNMAS` (`COMNM`, `COMADD`, `COMTEL`, `COMEMAIL`, `COMTAXID`, `NORDNOG`, `NORDNOS`, `NMSGNO`) VALUES
-('Trisoap', '', '', '', '', 100000000, 900000000, 100000);
+('Trisoap', '', '', '', '', 100000001, 900000001, 100001);
 
 --
 -- 已匯出資料表的索引
 --
 
 --
--- 資料表索引 `cusmas`
+-- 資料表索引 `CUSMAS`
 --
-ALTER TABLE `cusmas`
+ALTER TABLE `CUSMAS`
   ADD PRIMARY KEY (`EMAIL`);
 
 --
@@ -200,7 +203,7 @@ ALTER TABLE `MSGMAS`
 -- 資料表索引 `ORDITEMMAS`
 --
 ALTER TABLE `ORDITEMMAS`
-  ADD PRIMARY KEY (`ORDNO`,`ITEMNO`);
+  ADD PRIMARY KEY (`ORDNO`,`ITEMNO`,`EMAIL`);
 
 --
 -- 資料表索引 `ORDMAS`
